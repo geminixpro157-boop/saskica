@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saškica — Frizerski Salon Novi Sad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  /* Novi kolorit baziran na logotipu */
+  --sage-bg:     #4A7564; /* Glavna zelena sa logotipa */
+  --sage-dark:   #2C4A3E; /* Tamnija nijansa za kontrast */
+  --sage-pale:   #EAF1EE; /* Veoma svetla zelena za pozadine */
+  
+  --gold:        #D4AF37; /* Zlatna boja teksta sa logotipa */
+  --gold-light:  #E8CE85;
+  --gold-pale:   #F8F4EA; 
+  
+  --cream:       #FAFAF8;
+  --cream-dark:  #EFEFEA;
+  
+  --ink:         #1C2D26; /* Tamno zelena koja služi kao crna za tekst */
+  --ink-mid:     #4A665A;
+  --ink-light:   #829A90;
+  
+  --warm-white:  #FFFFFF;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+}
+
+/* ── FLOATING PETAL NAV ── */
+nav {
+  position: fixed;
+  top: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 300;
+  background: rgba(250,250,248,0.92);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(212,175,55,0.2);
+  border-radius: 100px;
+  padding: .6rem .6rem .6rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 4px 24px rgba(28,45,38,0.08), 0 1px 4px rgba(28,45,38,0.04);
+  white-space: nowrap;
+  transition: box-shadow .3s;
+}
+nav.elevated {
+  box-shadow: 0 8px 40px rgba(28,45,38,0.12), 0 2px 8px rgba(28,45,38,0.06);
+}
+
+.nav-logo {
+  font-family: 'Fraunces', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--sage-bg);
+  text-decoration: none;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+.nav-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-mid);
+  text-decoration: none;
+  transition: color .25s;
+}
+.nav-links a:hover { color: var(--gold); }
+
+.nav-cta {
+  background: var(--sage-bg);
+  color: var(--warm-white);
+  border: none;
+  border-radius: 100px;
+  padding: .65rem 1.4rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .25s, transform .2s;
+  flex-shrink: 0;
+}
+.nav-cta:hover { background: var(--sage-dark); transform: scale(1.03); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: var(--sage-bg);
+  color: var(--warm-white);
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+
+/* Wavy bottom divider */
+.hero-wave {
+  position: absolute;
+  bottom: -2px; left: 0; right: 0;
+  z-index: 10;
+}
+
+/* Decorative blob backgrounds */
+.blob-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hero-blob-1 {
+  position: absolute;
+  width: 600px; height: 600px;
+  background: var(--sage-dark);
+  border-radius: 67% 33% 41% 59% / 43% 57% 43% 57%;
+  top: -150px; right: -100px;
+  opacity: 0.3;
+  animation: morph1 16s ease-in-out infinite;
+}
+.hero-blob-2 {
+  position: absolute;
+  width: 350px; height: 350px;
+  background: var(--gold);
+  border-radius: 43% 57% 67% 33% / 59% 41% 59% 41%;
+  bottom: 60px; left: -60px;
+  opacity: 0.15;
+  animation: morph2 20s ease-in-out infinite;
+}
+@keyframes morph1 {
+  0%, 100% { border-radius: 67% 33% 41% 59% / 43% 57% 43% 57%; }
+  33%       { border-radius: 55% 45% 57% 43% / 60% 40% 60% 40%; }
+  66%       { border-radius: 40% 60% 50% 50% / 50% 50% 55% 45%; }
+}
+@keyframes morph2 {
+  0%, 100% { border-radius: 43% 57% 67% 33% / 59% 41% 59% 41%; }
+  50%       { border-radius: 60% 40% 43% 57% / 41% 59% 41% 59%; }
+}
+
+/* Dot texture */
+.hero-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(212,175,55,0.1) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+.hero-left {
+  padding: 10rem 3.5rem 6rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+  z-index: 5;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(212,175,55,0.3);
+  border-radius: 100px;
+  padding: .4rem 1rem;
+  align-self: flex-start;
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  animation: floatIn .7s cubic-bezier(.34,1.4,.64,1) forwards .1s;
+}
+.hero-tag-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+.hero-tag-text {
+  font-size: .62rem;
+  font-weight: 500;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+.hero-title {
+  opacity: 0;
+  animation: floatIn .8s cubic-bezier(.34,1.4,.64,1) forwards .3s;
+}
+.hero-title-script {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--gold);
+  display: block;
+  margin-bottom: .25rem;
+  letter-spacing: .04em;
+}
+.hero-name {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(4.5rem, 10vw, 8.5rem);
+  font-weight: 600;
+  line-height: .9;
+  color: var(--warm-white);
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+}
+.hero-name .soft { color: var(--gold); }
+.hero-name .outline {
+  -webkit-text-stroke: 1.5px var(--gold-light);
+  color: transparent;
+}
+
+.hero-tagline {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--cream-dark);
+  line-height: 1.6;
+  max-width: 380px;
+  opacity: 0;
+  animation: floatIn .8s cubic-bezier(.34,1.4,.64,1) forwards .5s;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: floatIn .7s cubic-bezier(.34,1.4,.64,1) forwards .7s;
+}
+.btn-primary {
+  background: var(--gold);
+  color: var(--sage-dark);
+  border: none;
+  border-radius: 100px;
+  padding: .9rem 2rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background .25s, transform .2s, box-shadow .2s;
+}
+.btn-primary:hover { 
+  background: var(--gold-light); 
+  transform: translateY(-2px); 
+  box-shadow: 0 8px 24px rgba(212,175,55,0.25);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid rgba(212,175,55,0.4);
+  border-radius: 100px;
+  padding: .9rem 1.75rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: .75rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: border-color .25s, color .25s, background .25s;
+}
+.btn-outline:hover { 
+  border-color: var(--gold); 
+  color: var(--sage-dark); 
+  background: var(--gold);
+}
+
+.hero-right {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 4rem 6rem;
+}
+
+/* The big organic card / "portrait frame" */
+.hero-frame {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  opacity: 0;
+  animation: floatIn .9s cubic-bezier(.34,1.4,.64,1) forwards .6s;
+}
+
+.hero-frame-inner {
+  background: var(--cream);
+  border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%;
+  aspect-ratio: 4/5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(28,45,38,0.2), 0 4px 16px rgba(28,45,38,0.1);
+  animation: morphFrame 18s ease-in-out infinite;
+}
+@keyframes morphFrame {
+  0%, 100% { border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%; }
+  33%       { border-radius: 50% 50% 40% 60% / 55% 45% 55% 45%; }
+  66%       { border-radius: 45% 55% 60% 40% / 40% 60% 45% 55%; }
+}
+
+.hero-frame-inner::before {
+  content: '';
+  position: absolute;
+  width: 200px; height: 200px;
+  background: var(--sage-pale);
+  border-radius: 50%;
+  top: -60px; right: -60px;
+  opacity: 0.7;
+}
+
+.hero-scissors-svg {
+  position: relative;
+  z-index: 2;
+}
+.frame-label {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.frame-label-text {
+  font-size: .65rem;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--sage-bg);
+}
+
+/* Rating pill */
+.hero-rating-pill {
+  position: absolute;
+  bottom: -1rem;
+  right: -1rem;
+  background: var(--gold);
+  color: var(--sage-dark);
+  border-radius: 100px;
+  padding: .85rem 1.5rem;
+  box-shadow: 0 8px 24px rgba(212,175,55,0.25);
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+.rating-pill-num {
+  font-family: 'Fraunces', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1;
+}
+.rating-pill-stars { font-size: .65rem; letter-spacing: .15em; opacity: .9; }
+.rating-pill-sub {
+  font-size: .55rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  opacity: .8;
+  margin-top: .15rem;
+}
+
+/* Floating label top-left */
+.hero-float-badge {
+  position: absolute;
+  top: 1rem;
+  left: -1.5rem;
+  background: rgba(250,250,248,0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(212,175,55,0.3);
+  border-radius: 12px;
+  padding: .75rem 1.1rem;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(28,45,38,0.15);
+}
+.float-badge-num {
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--sage-bg);
+  line-height: 1;
+}
+.float-badge-label {
+  font-size: .55rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-top: .2rem;
+}
+
+@keyframes floatIn {
+  from { opacity: 0; transform: translateY(20px) scale(.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── WAVE DIVIDERS ── */
+.wave-section {
+  position: relative;
+  margin-top: -2px;
+}
+.hero-wave path {
+  fill: var(--sage-dark);
+}
+
+/* ── STATS STRIP ── */
+.stats-strip {
+  background: var(--sage-dark);
+  padding: 3rem 5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  position: relative;
+}
+.stat-item {
+  text-align: center;
+  color: var(--warm-white);
+}
+.stat-num {
+  font-family: 'Fraunces', serif;
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+  display: block;
+}
+.stat-sup {
+  font-size: 1.2rem;
+  opacity: .8;
+}
+.stat-label {
+  font-size: .6rem;
+  font-weight: 500;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  opacity: .75;
+  margin-top: .4rem;
+}
+
+/* ── ABOUT ── */
+.about {
+  background: var(--cream);
+  padding: 8rem 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+  position: relative;
+}
+
+.about-left { position: relative; }
+
+.about-blob-deco {
+  position: absolute;
+  width: 120px; height: 120px;
+  background: var(--sage-pale);
+  border-radius: 60% 40% 70% 30% / 40% 60% 40% 60%;
+  top: -30px; left: -30px;
+  z-index: 0;
+}
+.about-eyebrow {
+  font-size: .6rem;
+  font-weight: 600;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+.about-eyebrow::after {
+  content: '';
+  display: block;
+  height: 1px;
+  width: 30px;
+  background: var(--gold);
+  opacity: .5;
+}
+.about-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--ink);
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1.5rem;
+}
+.about-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+.about-text {
+  font-size: .95rem;
+  line-height: 1.85;
+  color: var(--ink-mid);
+  margin-bottom: 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+.about-text strong { color: var(--sage-bg); font-weight: 600; }
+
+.about-quote-block {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--sage-pale);
+  border-radius: 20px;
+  border-left: 3px solid var(--gold);
+  position: relative;
+  z-index: 1;
+}
+.about-quote {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--sage-dark);
+  line-height: 1.6;
+}
+
+.about-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+.about-card {
+  background: var(--warm-white);
+  border-radius: 24px;
+  padding: 1.75rem;
+  transition: transform .3s, box-shadow .3s;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(74,117,100,0.05);
+}
+.about-card::before {
+  content: '';
+  position: absolute;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: var(--sage-pale);
+  bottom: -20px; right: -20px;
+  transition: transform .4s ease;
+}
+.about-card:hover::before { transform: scale(2.5); }
+.about-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(28,45,38,0.06); }
+.about-card-icon { font-size: 1.5rem; margin-bottom: 1rem; display: block; }
+.about-card-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--sage-dark);
+  margin-bottom: .4rem;
+  position: relative;
+  z-index: 1;
+}
+.about-card-text {
+  font-size: .8rem;
+  color: var(--ink-mid);
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+.about-card.featured {
+  background: var(--sage-bg);
+  grid-column: span 2;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  border-radius: 24px;
+}
+.about-card.featured::before { background: rgba(212,175,55,0.15); }
+.about-card.featured .about-card-title { color: var(--gold); }
+.about-card.featured .about-card-text { color: var(--warm-white); opacity: 0.9; }
+.about-card.featured .about-card-icon { font-size: 2rem; flex-shrink: 0; }
+
+/* ── SERVICES ── */
+.services {
+  background: var(--sage-pale);
+  padding: 8rem 5rem;
+  position: relative;
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.services-eyebrow {
+  font-size: .6rem;
+  font-weight: 600;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--sage-bg);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+}
+.services-eyebrow::before,
+.services-eyebrow::after {
+  content: '';
+  height: 1px;
+  width: 40px;
+  background: var(--sage-bg);
+  opacity: .4;
+}
+.services-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.05;
+}
+.services-title em { font-style: italic; color: var(--gold); }
+.services-sub {
+  font-size: .9rem;
+  color: var(--ink-light);
+  margin-top: .75rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.svc {
+  background: var(--warm-white);
+  border-radius: 28px;
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  transition: transform .3s, box-shadow .3s;
+  border: 1px solid rgba(212,175,55,0.08);
+}
+.svc:nth-child(2) { transform: translateY(1.5rem); }
+.svc:nth-child(5) { transform: translateY(1.5rem); }
+.svc::after {
+  content: '';
+  position: absolute;
+  width: 150px; height: 150px;
+  border-radius: 50%;
+  background: var(--gold-pale);
+  bottom: -50px; right: -50px;
+  transition: transform .5s ease;
+}
+.svc:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(28,45,38,0.08); }
+.svc:nth-child(2):hover { transform: translateY(calc(1.5rem - 6px)); }
+.svc:nth-child(5):hover { transform: translateY(calc(1.5rem - 6px)); }
+.svc:hover::after { transform: scale(2.5); }
+
+.svc-num {
+  font-family: 'Fraunces', serif;
+  font-size: .8rem;
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+.svc-icon {
+  font-size: 1.75rem;
+  margin-bottom: 1.25rem;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+.svc-name {
+  font-family: 'Fraunces', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--sage-dark);
+  margin-bottom: .6rem;
+  line-height: 1.2;
+  position: relative;
+  z-index: 1;
+}
+.svc-desc {
+  font-size: .82rem;
+  color: var(--ink-mid);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+.svc-price {
+  font-family: 'Fraunces', serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  position: relative;
+  z-index: 1;
+}
+.svc-price::before {
+  content: '';
+  height: 1px;
+  width: 20px;
+  background: var(--gold);
+  opacity: .8;
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials {
+  background: var(--cream);
+  padding: 8rem 5rem;
+  position: relative;
+}
+
+.testi-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.testi-eyebrow {
+  font-size: .6rem;
+  font-weight: 600;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--sage-bg);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+}
+.testi-eyebrow::before, .testi-eyebrow::after {
+  content: '';
+  height: 1px;
+  width: 30px;
+  background: var(--sage-bg);
+  opacity: .4;
+}
+.testi-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 600;
+  color: var(--ink);
+}
+.testi-title em { font-style: italic; color: var(--gold); }
+
+/* Rating summary */
+.testi-rating-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  margin-top: 1rem;
+}
+.testi-stars { color: var(--gold); font-size: 1.1rem; letter-spacing: .1em; }
+.testi-score {
+  font-family: 'Fraunces', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--sage-dark);
+}
+.testi-count {
+  font-size: .7rem;
+  color: var(--ink-light);
+  letter-spacing: .05em;
+}
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.testi-card {
+  background: var(--warm-white);
+  border-radius: 28px;
+  padding: 2.25rem;
+  position: relative;
+  transition: transform .3s, box-shadow .3s;
+  border: 1px solid rgba(74,117,100,0.08);
+}
+.testi-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(28,45,38,0.06);
+}
+.testi-card-stars {
+  color: var(--gold);
+  font-size: .75rem;
+  letter-spacing: .12em;
+  margin-bottom: 1.25rem;
+}
+.testi-text {
+  font-family: 'Fraunces', serif;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.75;
+  margin-bottom: 2rem;
+}
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+  border-top: 1px solid var(--cream-dark);
+  padding-top: 1.25rem;
+}
+.testi-avatar {
+  width: 40px; height: 40px;
+  background: var(--sage-pale);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Fraunces', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--sage-bg);
+  flex-shrink: 0;
+}
+.testi-name { font-size: .82rem; font-weight: 600; color: var(--sage-dark); }
+.testi-when { font-size: .65rem; color: var(--ink-light); margin-top: .1rem; }
+.testi-badge {
+  position: absolute;
+  top: 1.5rem; right: 1.5rem;
+  font-size: .52rem;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--sage-bg);
+  background: var(--sage-pale);
+  border-radius: 100px;
+  padding: .35rem .75rem;
+}
+
+/* ── CONTACT ── */
+.contact {
+  background: var(--sage-dark);
+  padding: 8rem 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Organic blob deco */
+.contact-blob {
+  position: absolute;
+  width: 500px; height: 500px;
+  background: rgba(212,175,55,0.05);
+  border-radius: 61% 39% 55% 45% / 43% 57% 43% 57%;
+  top: -100px; right: -100px;
+  pointer-events: none;
+  animation: morph1 20s ease-in-out infinite;
+}
+.contact-blob-2 {
+  position: absolute;
+  width: 300px; height: 300px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 43% 57% 43% 57% / 61% 39% 61% 39%;
+  bottom: -80px; left: 40%;
+  pointer-events: none;
+  animation: morph2 18s ease-in-out infinite;
+}
+
+.contact-left { position: relative; z-index: 2; }
+
+.contact-eyebrow {
+  font-size: .6rem;
+  font-weight: 500;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+.contact-eyebrow::after {
+  content: '';
+  height: 1px;
+  width: 25px;
+  background: var(--gold-light);
+  opacity: .5;
+}
+.contact-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--warm-white);
+  margin-bottom: 3rem;
+}
+.contact-title em { font-style: italic; color: var(--gold); }
+
+.contact-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+.ci {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  transition: transform .25s;
+}
+.ci:hover { transform: translateX(4px); }
+.ci-icon {
+  width: 44px; height: 44px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  border: 1px solid rgba(212,175,55,0.2);
+  transition: background .25s, border-color .25s;
+  color: var(--gold);
+}
+.ci:hover .ci-icon {
+  background: rgba(212,175,55,0.15);
+  border-color: rgba(212,175,55,0.4);
+}
+.ci-label {
+  font-size: .55rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(250,250,248,0.5);
+  margin-bottom: .3rem;
+}
+.ci-value {
+  font-size: .95rem;
+  color: var(--warm-white);
+  line-height: 1.5;
+}
+.ci-value a {
+  color: var(--gold-light);
+  text-decoration: none;
+  transition: color .2s;
+}
+.ci-value a:hover { color: var(--gold); }
+
+.contact-socials {
+  display: flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
+}
+.social-pill {
+  font-size: .62rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(250,250,248,0.7);
+  border-radius: 100px;
+  padding: .5rem 1.1rem;
+  text-decoration: none;
+  transition: border-color .25s, color .25s, background .25s;
+}
+.social-pill:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(212,175,55,0.1);
+}
+
+.contact-right { position: relative; z-index: 2; }
+
+.form-title {
+  font-family: 'Fraunces', serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--warm-white);
+  margin-bottom: 2rem;
+}
+
+.cform { display: flex; flex-direction: column; gap: 1.5rem; }
+.cform-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+
+.cfield { display: flex; flex-direction: column; gap: .4rem; }
+.cfield label {
+  font-size: .58rem;
+  font-weight: 500;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(250,250,248,0.6);
+}
+.cfield input, .cfield textarea, .cfield select {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: .85rem 1rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: .9rem;
+  font-weight: 300;
+  color: var(--warm-white);
+  outline: none;
+  transition: border-color .3s, background .3s;
+  resize: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.cfield input:focus, .cfield textarea:focus, .cfield select:focus {
+  border-color: rgba(212,175,55,0.5);
+  background: rgba(212,175,55,0.05);
+}
+.cfield input::placeholder, .cfield textarea::placeholder {
+  color: rgba(250,250,248,0.3);
+}
+.cfield select option { background: var(--sage-dark); color: var(--warm-white); }
+
+.csubmit {
+  background: var(--gold);
+  color: var(--sage-dark);
+  border: none;
+  border-radius: 100px;
+  padding: 1rem 2.5rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  align-self: flex-start;
+  margin-top: .25rem;
+  transition: background .25s, transform .2s, box-shadow .25s;
+}
+.csubmit:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212,175,55,0.25);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  padding: 2rem 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.footer-logo {
+  font-family: 'Fraunces', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--gold);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.footer-copy {
+  font-size: .6rem;
+  font-weight: 500;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(250,250,248,0.4);
+}
+.footer-links { display: flex; gap: 1.75rem; }
+.footer-links a {
+  font-size: .6rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(250,250,248,0.5);
+  text-decoration: none;
+  transition: color .25s;
+}
+.footer-links a:hover { color: var(--gold); }
+
+/* ── REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .85s ease, transform .85s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .hero-left { padding: 10rem 3rem 5rem; }
+}
+@media (max-width: 900px) {
+  nav {
+    top: auto; bottom: 1.25rem;
+    left: 1rem; right: 1rem;
+    transform: none;
+    border-radius: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: .5rem;
+    padding: 1rem;
+  }
+  .nav-links { display: none; }
+  .nav-dot { display: none; }
+  .hero-left { padding: 5rem 1.5rem 4rem; }
+  .stats-strip { grid-template-columns: 1fr 1fr; padding: 3rem 1.5rem; gap: 1.5rem; }
+  .about { grid-template-columns: 1fr; padding: 5rem 1.5rem; gap: 3rem; }
+  .about-right { grid-template-columns: 1fr 1fr; }
+  .about-card.featured { grid-column: span 2; flex-direction: column; }
+  .services { padding: 5rem 1.5rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .svc:nth-child(2), .svc:nth-child(5) { transform: translateY(0); }
+  .svc:nth-child(2):hover, .svc:nth-child(5):hover { transform: translateY(-6px); }
+  .testimonials { padding: 5rem 1.5rem; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .contact { grid-template-columns: 1fr; padding: 5rem 1.5rem; gap: 3rem; }
+  .cform-row { grid-template-columns: 1fr; }
+  footer { padding: 1.5rem; flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="nav-logo">Saškica</a>
+  <div class="nav-dot"></div>
+  <ul class="nav-links">
+    <li><a href="#services">Usluge</a></li>
+    <li><a href="#testimonials">Utisci</a></li>
+    <li><a href="#contact">Kontakt</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Zakaži</button>
+</nav>
+
+<section class="hero">
+  <div class="blob-wrap">
+    <div class="hero-blob-1"></div>
+    <div class="hero-blob-2"></div>
+    <div class="hero-dots"></div>
+  </div>
+
+  <div class="hero-left">
+    <div class="hero-tag">
+      <span class="hero-tag-dot"></span>
+      <span class="hero-tag-text">Frizerski studio · Novi Sad</span>
+    </div>
+
+    <div class="hero-title">
+      <span class="hero-title-script">dobrodošli u</span>
+      <h1 class="hero-name">
+        Saš<span class="soft">ki</span><span class="outline">ca</span>
+      </h1>
+    </div>
+
+    <p class="hero-tagline">
+      Mesto gde svaka klijentkinja postaje<br>
+      najlepša verzija sebe.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Zakaži termin</a>
+      <a href="#services" class="btn-outline">Naše usluge ↓</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-frame">
+      <div class="hero-float-badge">
+        <div class="float-badge-num">98</div>
+        <div class="float-badge-label">Recenzija</div>
+      </div>
+
+      <div class="hero-frame-inner">
+        <svg class="hero-scissors-svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
+          <circle cx="28" cy="28" r="14" stroke="#D4AF37" stroke-width="1.5" fill="none" opacity="0.8"/>
+          <circle cx="28" cy="72" r="14" stroke="#D4AF37" stroke-width="1.5" fill="none" opacity="0.8"/>
+          <circle cx="28" cy="28" r="5" fill="#D4AF37" opacity="0.5"/>
+          <circle cx="28" cy="72" r="5" fill="#D4AF37" opacity="0.5"/>
+          <line x1="38" y1="22" x2="88" y2="80" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+          <line x1="38" y1="78" x2="88" y2="20" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+          <circle cx="63" cy="50" r="4" fill="#4A7564" opacity="0.9"/>
+        </svg>
+        <div class="frame-label">
+          <p class="frame-label-text">Vaša frizerka</p>
+        </div>
+      </div>
+
+      <div class="hero-rating-pill">
+        <div class="rating-pill-num">4.6</div>
+        <div class="rating-pill-info">
+          <div class="rating-pill-stars">★★★★★</div>
+          <div class="rating-pill-sub">Google ocena</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <svg class="hero-wave" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z"/>
+  </svg>
+</section>
+
+<div class="stats-strip">
+  <div class="stat-item reveal">
+    <span class="stat-num">4.6<span class="stat-sup">★</span></span>
+    <span class="stat-label">Google ocena</span>
+  </div>
+  <div class="stat-item reveal">
+    <span class="stat-num">98<span class="stat-sup">+</span></span>
+    <span class="stat-label">Zadovoljnih klijenata</span>
+  </div>
+  <div class="stat-item reveal">
+    <span class="stat-num">8<span class="stat-sup">+</span></span>
+    <span class="stat-label">Godina iskustva</span>
+  </div>
+  <div class="stat-item reveal">
+    <span class="stat-num">100<span class="stat-sup">%</span></span>
+    <span class="stat-label">Posvećenost</span>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="about-left">
+    <div class="about-blob-deco"></div>
+    <p class="about-eyebrow reveal">O nama</p>
+    <h2 class="about-title reveal">Više od<br><em>frizure</em></h2>
+    <p class="about-text reveal">
+      <strong>Saškica Hair Studio</strong> je luksuzni frizerski salon u Novom Sadu gde se svaka klijentka oseća kao kod kuće. Naš salon nije samo mesto za šišanje — to je prostor odmora, brige i lepote.
+    </p>
+    <p class="about-text reveal">
+      Posvećene smo svakom detalju, od prvog pozdrava do poslednjeg pogleda u ogledalo. Zato nas naše klijentkinje biraju iznova i iznova.
+    </p>
+    <div class="about-quote-block reveal">
+      <p class="about-quote">"Lepota počinje onog momenta kada odlučiš da budeš svoja — mi smo tu da ti pomognemo da zasjaš."</p>
+    </div>
+  </div>
+
+  <div class="about-right reveal">
+    <div class="about-card">
+      <span class="about-card-icon">🌿</span>
+      <h3 class="about-card-title">Topla atmosfera</h3>
+      <p class="about-card-text">Salon dizajniran da se osećate potpuno opušteno od trenutka kada uđete.</p>
+    </div>
+    <div class="about-card">
+      <span class="about-card-icon">✨</span>
+      <h3 class="about-card-title">Premium proizvodi</h3>
+      <p class="about-card-text">Koristimo samo profesionalne proizvode vrhunskog kvaliteta.</p>
+    </div>
+    <div class="about-card">
+      <span class="about-card-icon">💝</span>
+      <h3 class="about-card-title">Pažnja na detalje</h3>
+      <p class="about-card-text">Svaka poseta je personalizovana upravo za vas i vašu kosu.</p>
+    </div>
+    <div class="about-card featured">
+      <span class="about-card-icon">⭐</span>
+      <div>
+        <h3 class="about-card-title">4.6★ na Google-u</h3>
+        <p class="about-card-text">98+ iskrenih recenzija zadovoljnih klijentkinja potvrđuju naš kvalitet i posvećenost.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="services-header">
+    <p class="services-eyebrow reveal">Šta nudimo</p>
+    <h2 class="services-title reveal">Naše <em>usluge</em></h2>
+    <p class="services-sub reveal">Svaka usluga prilagođena vašim potrebama i vašoj kosi.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="svc reveal">
+      <p class="svc-num">— 01</p>
+      <span class="svc-icon">✂️</span>
+      <h3 class="svc-name">Šišanje & Oblikovanje</h3>
+      <p class="svc-desc">Precizni rezovi za sve tipove kose, prilagođeni obliku vašeg lica i vašem stilu. Kratka, duga, ravna ili kovrdžava.</p>
+      <span class="svc-price">od 1.500 rsd</span>
+    </div>
+
+    <div class="svc reveal">
+      <p class="svc-num">— 02</p>
+      <span class="svc-icon">🎨</span>
+      <h3 class="svc-name">Bojenje & Balayage</h3>
+      <p class="svc-desc">Cela boja, highlights ili prirodni balayage prelazi koji izgledaju kao da ste proveli leto na suncu. Boja koja sjaji.</p>
+      <span class="svc-price">od 3.500 rsd</span>
+    </div>
+
+    <div class="svc reveal">
+      <p class="svc-num">— 03</p>
+      <span class="svc-icon">🌿</span>
+      <h3 class="svc-name">Nega & Tretmani</h3>
+      <p class="svc-desc">Keratin, botoks za kosu, dubinska hidratacija. Vraćamo zdravlje i sjaj svakom tipu kose koji je bio izložen stresu.</p>
+      <span class="svc-price">od 2.500 rsd</span>
+    </div>
+
+    <div class="svc reveal">
+      <p class="svc-num">— 04</p>
+      <span class="svc-icon">💐</span>
+      <h3 class="svc-name">Svečane Frizure</h3>
+      <p class="svc-desc">Za vaš poseban dan — venčanje, proslava, matura. Punđe, pletenice i glamurozne stilizacije koje traju čitav dan.</p>
+      <span class="svc-price">od 3.500 rsd</span>
+    </div>
+
+    <div class="svc reveal">
+      <p class="svc-num">— 05</p>
+      <span class="svc-icon">🌊</span>
+      <h3 class="svc-name">Trajni Talasi</h3>
+      <p class="svc-desc">Definisane kovrdže i talasi koji traju mesecima. Volumen i tekstura prilagođeni vašem licu i tipu kose.</p>
+      <span class="svc-price">od 4.000 rsd</span>
+    </div>
+
+    <div class="svc reveal">
+      <p class="svc-num">— 06</p>
+      <span class="svc-icon">✨</span>
+      <h3 class="svc-name">Feniranje & Styling</h3>
+      <p class="svc-desc">Savršeno feniranje i stilizacija za svaki izlazak ili poslovni dan. Glatko, voluminozno ili sa zavojima — vi birate.</p>
+      <span class="svc-price">od 1.200 rsd</span>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="testi-header">
+    <p class="testi-eyebrow reveal">Utisci</p>
+    <h2 class="testi-title reveal">Šta naše <em>klijentkinje</em> kažu</h2>
+    <div class="testi-rating-row reveal">
+      <span class="testi-stars">★★★★★</span>
+      <span class="testi-score">4.6</span>
+      <span class="testi-count">· 98 Google recenzija</span>
+    </div>
+  </div>
+
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <span class="testi-badge">Google</span>
+      <div class="testi-card-stars">★★★★★</div>
+      <p class="testi-text">"Pronašla sam svoje frizersko okrilje! Saška je čudesna — razumela je šta hoću bez puno reči i rezultat je bio savršen. Atmosfera je topla i prijatna. Dolazim svaki mesec!"</p>
+      <div class="testi-author">
+        <div class="testi-avatar">J</div>
+        <div>
+          <p class="testi-name">Jelena P.</p>
+          <p class="testi-when">Pre mesec dana</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card reveal">
+      <span class="testi-badge">Google</span>
+      <div class="testi-card-stars">★★★★★</div>
+      <p class="testi-text">"Konačno pravi balayage u Novom Sadu! Tražila sam ovu boju godinama i Saška je pogodila savršeno. Salon je divan, čist i uvek se osećam kao VIP gošća."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">A</div>
+        <div>
+          <p class="testi-name">Ana R.</p>
+          <p class="testi-when">Pre 3 nedelje</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card reveal">
+      <span class="testi-badge">Google</span>
+      <div class="testi-card-stars">★★★★☆</div>
+      <p class="testi-text">"Već dve godine samo Saška mi dira kosu. Profesionalna, pažljiva i uvek ima sjajne ideje za moj stil. Keratinski tretman koji je uradila je promenio moju kosu totalno."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">M</div>
+        <div>
+          <p class="testi-name">Maja S.</p>
+          <p class="testi-when">Pre 2 meseca</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-blob"></div>
+  <div class="contact-blob-2"></div>
+
+  <div class="contact-left">
+    <p class="contact-eyebrow reveal">Pronađite nas</p>
+    <h2 class="contact-title reveal">Zakažite<br>svoju <em>posetu</em></h2>
+
+    <div class="contact-items">
+      <div class="ci reveal">
+        <div class="ci-icon">📞</div>
+        <div>
+          <p class="ci-label">Telefon</p>
+          <p class="ci-value"><a href="tel:+381652700048">065 270 0048</a></p>
+        </div>
+      </div>
+      <div class="ci reveal">
+        <div class="ci-icon">📍</div>
+        <div>
+          <p class="ci-label">Adresa</p>
+          <p class="ci-value">Novi Sad, Srbija</p>
+        </div>
+      </div>
+      <div class="ci reveal">
+        <div class="ci-icon">📸</div>
+        <div>
+          <p class="ci-label">Instagram</p>
+          <p class="ci-value"><a href="https://www.instagram.com/studiosaskica/" target="_blank">@studiosaskica</a></p>
+        </div>
+      </div>
+      <div class="ci reveal">
+        <div class="ci-icon">🕐</div>
+        <div>
+          <p class="ci-label">Radno vreme</p>
+          <p class="ci-value">Pon – Sub: 09:00 – 20:00<br>Ned: Po dogovoru</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-socials reveal">
+      <a href="https://www.instagram.com/studiosaskica/" target="_blank" class="social-pill">Instagram</a>
+      <a href="https://www.facebook.com/p/Studio-Sa%C5%A1kica-100063625088729/" target="_blank" class="social-pill">Facebook</a>
+      <a href="https://maps.app.goo.gl/bU6sbvUvXACW66tu5" target="_blank" class="social-pill">Google Maps</a>
+    </div>
+  </div>
+
+  <div class="contact-right">
+    <p class="form-title reveal">Pošaljite nam poruku ✉</p>
+
+    <form class="cform reveal" onsubmit="handleSubmit(event)">
+      <div class="cform-row">
+        <div class="cfield">
+          <label>Vaše ime</label>
+          <input type="text" placeholder="Jovana...">
+        </div>
+        <div class="cfield">
+          <label>Telefon</label>
+          <input type="tel" placeholder="065 123 4567">
+        </div>
+      </div>
+      <div class="cfield">
+        <label>Usluga</label>
+        <select>
+          <option value="" disabled selected>Izaberite uslugu ↓</option>
+          <option>Šišanje & Oblikovanje</option>
+          <option>Bojenje & Balayage</option>
+          <option>Nega & Tretmani</option>
+          <option>Svečane Frizure</option>
+          <option>Trajni Talasi</option>
+          <option>Feniranje & Styling</option>
+        </select>
+      </div>
+      <div class="cfield">
+        <label>Poruka ili željeni termin</label>
+        <textarea rows="3" placeholder="Recite nam šta biste voleli ili kada biste mogli da dođete..."></textarea>
+      </div>
+      <button type="submit" class="csubmit">Pošalji poruku →</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">Saškica</span>
+  <span class="footer-copy">© 2026 Studio Saškica · Novi Sad</span>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/studiosaskica/" target="_blank">Instagram</a>
+    <a href="https://www.facebook.com/p/Studio-Sa%C5%A1kica-100063625088729/" target="_blank">Facebook</a>
+    <a href="https://maps.app.goo.gl/bU6sbvUvXACW66tu5" target="_blank">Google Maps</a>
+  </div>
+</footer>
+
+<script>
+// Nav elevation
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('elevated', window.scrollY > 80);
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Form
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.csubmit');
+  const orig = btn.textContent;
+  btn.textContent = 'Poslato! ✨';
+  btn.style.background = 'var(--sage-bg)';
+  btn.style.color = 'var(--warm-white)';
+  setTimeout(() => {
+    btn.textContent = orig;
+    btn.style.background = '';
+    btn.style.color = '';
+    e.target.reset();
+  }, 3000);
+}
+</script>
+</body>
+</html>
