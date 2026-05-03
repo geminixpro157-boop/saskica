@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <title>Saškica — Frizerski Salon Novi Sad</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,1352 +11,512 @@
 
 <style>
 :root {
-  /* Novi kolorit baziran na logotipu */
-  --sage-bg:     #4A7564; /* Glavna zelena sa logotipa */
-  --sage-dark:   #2C4A3E; /* Tamnija nijansa za kontrast */
-  --sage-pale:   #EAF1EE; /* Veoma svetla zelena za pozadine */
-  
-  --gold:        #D4AF37; /* Zlatna boja teksta sa logotipa */
-  --gold-light:  #E8CE85;
-  --gold-pale:   #F8F4EA; 
-  
-  --cream:       #FAFAF8;
-  --cream-dark:  #EFEFEA;
-  
-  --ink:         #1C2D26; /* Tamno zelena koja služi kao crna za tekst */
-  --ink-mid:     #4A665A;
-  --ink-light:   #829A90;
-  
-  --warm-white:  #FFFFFF;
+  --sage-bg:   #4A7564;
+  --sage-dark: #2C4A3E;
+  --sage-pale: #EAF1EE;
+  --gold:      #D4AF37;
+  --gold-light:#E8CE85;
+  --gold-pale: #F8F4EA;
+  --cream:     #FAFAF8;
+  --cream-dark:#EFEFEA;
+  --ink:       #1C2D26;
+  --ink-mid:   #4A665A;
+  --ink-light: #829A90;
+  --warm-white:#FFFFFF;
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font-family:'Outfit',sans-serif;font-weight:300;overflow-x:hidden}
 
-body {
-  background: var(--cream);
-  color: var(--ink);
-  font-family: 'Outfit', sans-serif;
-  font-weight: 300;
-  overflow-x: hidden;
-}
+/* ── NAV ── */
+nav{position:fixed;top:1.25rem;left:50%;transform:translateX(-50%);z-index:300;background:rgba(250,250,248,0.92);backdrop-filter:blur(16px);border:1px solid rgba(212,175,55,0.2);border-radius:100px;padding:.6rem .6rem .6rem 1.5rem;display:flex;align-items:center;gap:1.5rem;box-shadow:0 4px 24px rgba(28,45,38,0.08),0 1px 4px rgba(28,45,38,0.04);white-space:nowrap;transition:box-shadow .3s,background .3s}
+nav.elevated{box-shadow:0 8px 40px rgba(28,45,38,0.12),0 2px 8px rgba(28,45,38,0.06)}
+.nav-logo{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:400;font-style:italic;color:var(--sage-bg);text-decoration:none;letter-spacing:.05em;text-transform:uppercase}
+.nav-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{font-size:.68rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mid);text-decoration:none;transition:color .25s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--sage-bg);color:var(--warm-white);border:none;border-radius:100px;padding:.65rem 1.4rem;font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .25s,transform .2s;flex-shrink:0}
+.nav-cta:hover{background:var(--sage-dark);transform:scale(1.03)}
 
-/* ── FLOATING PETAL NAV ── */
-nav {
-  position: fixed;
-  top: 1.25rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 300;
-  background: rgba(250,250,248,0.92);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(212,175,55,0.2);
-  border-radius: 100px;
-  padding: .6rem .6rem .6rem 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  box-shadow: 0 4px 24px rgba(28,45,38,0.08), 0 1px 4px rgba(28,45,38,0.04);
-  white-space: nowrap;
-  transition: box-shadow .3s;
-}
-nav.elevated {
-  box-shadow: 0 8px 40px rgba(28,45,38,0.12), 0 2px 8px rgba(28,45,38,0.06);
-}
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;background:transparent;border:none;cursor:pointer;padding:.25rem;z-index:400;flex-shrink:0}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--sage-bg);transition:transform .3s,opacity .3s}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 
-.nav-logo {
-  font-family: 'Fraunces', serif;
-  font-size: 1.2rem;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--sage-bg);
-  text-decoration: none;
-  letter-spacing: .05em;
-  text-transform: uppercase;
-}
-
-.nav-dot {
-  width: 4px; height: 4px;
-  border-radius: 50%;
-  background: var(--gold);
-  flex-shrink: 0;
-}
-
-.nav-links {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-}
-.nav-links a {
-  font-size: .68rem;
-  font-weight: 500;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--ink-mid);
-  text-decoration: none;
-  transition: color .25s;
-}
-.nav-links a:hover { color: var(--gold); }
-
-.nav-cta {
-  background: var(--sage-bg);
-  color: var(--warm-white);
-  border: none;
-  border-radius: 100px;
-  padding: .65rem 1.4rem;
-  font-family: 'Outfit', sans-serif;
-  font-size: .68rem;
-  font-weight: 500;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: background .25s, transform .2s;
-  flex-shrink: 0;
-}
-.nav-cta:hover { background: var(--sage-dark); transform: scale(1.03); }
+/* Mobile full-screen menu */
+.mobile-menu{position:fixed;inset:0;background:rgba(44,74,62,0.98);backdrop-filter:blur(24px);z-index:350;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;transform:translateY(-100%);transition:transform .4s cubic-bezier(.4,0,.2,1)}
+.mobile-menu.open{transform:translateY(0)}
+.mobile-menu a{font-family:'Fraunces',serif;font-size:1rem;font-weight:300;font-style:italic;color:var(--cream);text-decoration:none;letter-spacing:.05em;transition:color .3s}
+.mobile-menu a:hover{color:var(--gold)}
+.mobile-menu-divider{width:40px;height:1px;background:rgba(212,175,55,0.3)}
+.mobile-menu-cta{font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;background:var(--gold);color:var(--sage-dark);border:none;border-radius:100px;padding:.9rem 2rem;cursor:pointer;text-decoration:none;transition:background .25s,transform .2s;margin-top:.5rem}
+.mobile-menu-cta:hover{background:var(--gold-light);transform:scale(1.03)}
 
 /* ── HERO ── */
-.hero {
-  min-height: 100vh;
-  background: var(--sage-bg);
-  color: var(--warm-white);
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  overflow: hidden;
-}
+.hero{min-height:100vh;background:var(--sage-bg);color:var(--warm-white);position:relative;display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.hero-wave{position:absolute;bottom:-2px;left:0;right:0;z-index:10}
+.hero-wave path{fill:var(--sage-dark)}
+.blob-wrap{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.hero-blob-1{position:absolute;width:600px;height:600px;background:var(--sage-dark);border-radius:67% 33% 41% 59%/43% 57% 43% 57%;top:-150px;right:-100px;opacity:.3;animation:morph1 16s ease-in-out infinite}
+.hero-blob-2{position:absolute;width:350px;height:350px;background:var(--gold);border-radius:43% 57% 67% 33%/59% 41% 59% 41%;bottom:60px;left:-60px;opacity:.15;animation:morph2 20s ease-in-out infinite}
+@keyframes morph1{0%,100%{border-radius:67% 33% 41% 59%/43% 57% 43% 57%}33%{border-radius:55% 45% 57% 43%/60% 40% 60% 40%}66%{border-radius:40% 60% 50% 50%/50% 50% 55% 45%}}
+@keyframes morph2{0%,100%{border-radius:43% 57% 67% 33%/59% 41% 59% 41%}50%{border-radius:60% 40% 43% 57%/41% 59% 41% 59%}}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(212,175,55,.1) 1px,transparent 1px);background-size:28px 28px;pointer-events:none}
 
-/* Wavy bottom divider */
-.hero-wave {
-  position: absolute;
-  bottom: -2px; left: 0; right: 0;
-  z-index: 10;
-}
+.hero-left{padding:10rem 3.5rem 6rem 5rem;display:flex;flex-direction:column;justify-content:center;gap:2rem;position:relative;z-index:5}
+.hero-tag{display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.1);border:1px solid rgba(212,175,55,.3);border-radius:100px;padding:.4rem 1rem;align-self:flex-start;backdrop-filter:blur(4px);opacity:0;animation:floatIn .7s cubic-bezier(.34,1.4,.64,1) forwards .1s}
+.hero-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0}
+.hero-tag-text{font-size:.62rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-light)}
+.hero-title{opacity:0;animation:floatIn .8s cubic-bezier(.34,1.4,.64,1) forwards .3s}
+.hero-title-script{font-family:'Fraunces',serif;font-size:clamp(1.2rem,2vw,1.8rem);font-weight:300;font-style:italic;color:var(--gold);display:block;margin-bottom:.25rem;letter-spacing:.04em}
+.hero-name{font-family:'Fraunces',serif;font-size:clamp(4.5rem,10vw,8.5rem);font-weight:600;line-height:.9;color:var(--warm-white);letter-spacing:-.02em;text-transform:uppercase}
+.hero-name .soft{color:var(--gold)}
+.hero-name .outline{-webkit-text-stroke:1.5px var(--gold-light);color:transparent}
+.hero-tagline{font-family:'Fraunces',serif;font-size:clamp(1rem,1.8vw,1.35rem);font-weight:300;font-style:italic;color:var(--cream-dark);line-height:1.6;max-width:380px;opacity:0;animation:floatIn .8s cubic-bezier(.34,1.4,.64,1) forwards .5s}
+.hero-actions{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;opacity:0;animation:floatIn .7s cubic-bezier(.34,1.4,.64,1) forwards .7s}
+.btn-primary{background:var(--gold);color:var(--sage-dark);border:none;border-radius:100px;padding:.9rem 2rem;font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:background .25s,transform .2s,box-shadow .2s}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,175,55,.25)}
+.btn-outline{background:transparent;border:1.5px solid rgba(212,175,55,.4);border-radius:100px;padding:.9rem 1.75rem;font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-light);cursor:pointer;text-decoration:none;display:inline-block;transition:border-color .25s,color .25s,background .25s}
+.btn-outline:hover{border-color:var(--gold);color:var(--sage-dark);background:var(--gold)}
 
-/* Decorative blob backgrounds */
-.blob-wrap {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-.hero-blob-1 {
-  position: absolute;
-  width: 600px; height: 600px;
-  background: var(--sage-dark);
-  border-radius: 67% 33% 41% 59% / 43% 57% 43% 57%;
-  top: -150px; right: -100px;
-  opacity: 0.3;
-  animation: morph1 16s ease-in-out infinite;
-}
-.hero-blob-2 {
-  position: absolute;
-  width: 350px; height: 350px;
-  background: var(--gold);
-  border-radius: 43% 57% 67% 33% / 59% 41% 59% 41%;
-  bottom: 60px; left: -60px;
-  opacity: 0.15;
-  animation: morph2 20s ease-in-out infinite;
-}
-@keyframes morph1 {
-  0%, 100% { border-radius: 67% 33% 41% 59% / 43% 57% 43% 57%; }
-  33%       { border-radius: 55% 45% 57% 43% / 60% 40% 60% 40%; }
-  66%       { border-radius: 40% 60% 50% 50% / 50% 50% 55% 45%; }
-}
-@keyframes morph2 {
-  0%, 100% { border-radius: 43% 57% 67% 33% / 59% 41% 59% 41%; }
-  50%       { border-radius: 60% 40% 43% 57% / 41% 59% 41% 59%; }
-}
+.hero-right{position:relative;z-index:5;display:flex;align-items:center;justify-content:center;padding:8rem 4rem 6rem}
+.hero-frame{position:relative;width:100%;max-width:420px;opacity:0;animation:floatIn .9s cubic-bezier(.34,1.4,.64,1) forwards .6s}
+.hero-frame-inner{background:var(--cream);border-radius:60% 40% 55% 45%/45% 55% 45% 55%;aspect-ratio:4/5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.25rem;padding:3rem;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(28,45,38,.2),0 4px 16px rgba(28,45,38,.1);animation:morphFrame 18s ease-in-out infinite}
+@keyframes morphFrame{0%,100%{border-radius:60% 40% 55% 45%/45% 55% 45% 55%}33%{border-radius:50% 50% 40% 60%/55% 45% 55% 45%}66%{border-radius:45% 55% 60% 40%/40% 60% 45% 55%}}
+.hero-frame-inner::before{content:'';position:absolute;width:200px;height:200px;background:var(--sage-pale);border-radius:50%;top:-60px;right:-60px;opacity:.7}
+.hero-scissors-svg{position:relative;z-index:2}
+.frame-label{position:relative;z-index:2;text-align:center}
+.frame-label-text{font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--sage-bg)}
+.hero-rating-pill{position:absolute;bottom:-1rem;right:-1rem;background:var(--gold);color:var(--sage-dark);border-radius:100px;padding:.85rem 1.5rem;box-shadow:0 8px 24px rgba(212,175,55,.25);display:flex;align-items:center;gap:.75rem}
+.rating-pill-num{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:600;line-height:1}
+.rating-pill-stars{font-size:.65rem;letter-spacing:.15em;opacity:.9}
+.rating-pill-sub{font-size:.55rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;opacity:.8;margin-top:.15rem}
+.hero-float-badge{position:absolute;top:1rem;left:-1.5rem;background:rgba(250,250,248,.95);backdrop-filter:blur(10px);border:1px solid rgba(212,175,55,.3);border-radius:12px;padding:.75rem 1.1rem;text-align:center;box-shadow:0 4px 16px rgba(28,45,38,.15)}
+.float-badge-num{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:600;color:var(--sage-bg);line-height:1}
+.float-badge-label{font-size:.55rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);margin-top:.2rem}
 
-/* Dot texture */
-.hero-dots {
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, rgba(212,175,55,0.1) 1px, transparent 1px);
-  background-size: 28px 28px;
-  pointer-events: none;
-}
-
-.hero-left {
-  padding: 10rem 3.5rem 6rem 5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2rem;
-  position: relative;
-  z-index: 5;
-}
-
-.hero-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: .6rem;
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(212,175,55,0.3);
-  border-radius: 100px;
-  padding: .4rem 1rem;
-  align-self: flex-start;
-  backdrop-filter: blur(4px);
-  opacity: 0;
-  animation: floatIn .7s cubic-bezier(.34,1.4,.64,1) forwards .1s;
-}
-.hero-tag-dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--gold);
-  flex-shrink: 0;
-}
-.hero-tag-text {
-  font-size: .62rem;
-  font-weight: 500;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  color: var(--gold-light);
-}
-
-.hero-title {
-  opacity: 0;
-  animation: floatIn .8s cubic-bezier(.34,1.4,.64,1) forwards .3s;
-}
-.hero-title-script {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(1.2rem, 2vw, 1.8rem);
-  font-weight: 300;
-  font-style: italic;
-  color: var(--gold);
-  display: block;
-  margin-bottom: .25rem;
-  letter-spacing: .04em;
-}
-.hero-name {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(4.5rem, 10vw, 8.5rem);
-  font-weight: 600;
-  line-height: .9;
-  color: var(--warm-white);
-  letter-spacing: -.02em;
-  text-transform: uppercase;
-}
-.hero-name .soft { color: var(--gold); }
-.hero-name .outline {
-  -webkit-text-stroke: 1.5px var(--gold-light);
-  color: transparent;
-}
-
-.hero-tagline {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(1rem, 1.8vw, 1.35rem);
-  font-weight: 300;
-  font-style: italic;
-  color: var(--cream-dark);
-  line-height: 1.6;
-  max-width: 380px;
-  opacity: 0;
-  animation: floatIn .8s cubic-bezier(.34,1.4,.64,1) forwards .5s;
-}
-
-.hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  flex-wrap: wrap;
-  opacity: 0;
-  animation: floatIn .7s cubic-bezier(.34,1.4,.64,1) forwards .7s;
-}
-.btn-primary {
-  background: var(--gold);
-  color: var(--sage-dark);
-  border: none;
-  border-radius: 100px;
-  padding: .9rem 2rem;
-  font-family: 'Outfit', sans-serif;
-  font-size: .75rem;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-  transition: background .25s, transform .2s, box-shadow .2s;
-}
-.btn-primary:hover { 
-  background: var(--gold-light); 
-  transform: translateY(-2px); 
-  box-shadow: 0 8px 24px rgba(212,175,55,0.25);
-}
-
-.btn-outline {
-  background: transparent;
-  border: 1.5px solid rgba(212,175,55,0.4);
-  border-radius: 100px;
-  padding: .9rem 1.75rem;
-  font-family: 'Outfit', sans-serif;
-  font-size: .75rem;
-  font-weight: 500;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--gold-light);
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-  transition: border-color .25s, color .25s, background .25s;
-}
-.btn-outline:hover { 
-  border-color: var(--gold); 
-  color: var(--sage-dark); 
-  background: var(--gold);
-}
-
-.hero-right {
-  position: relative;
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8rem 4rem 6rem;
-}
-
-/* The big organic card / "portrait frame" */
-.hero-frame {
-  position: relative;
-  width: 100%;
-  max-width: 420px;
-  opacity: 0;
-  animation: floatIn .9s cubic-bezier(.34,1.4,.64,1) forwards .6s;
-}
-
-.hero-frame-inner {
-  background: var(--cream);
-  border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%;
-  aspect-ratio: 4/5;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.25rem;
-  padding: 3rem;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(28,45,38,0.2), 0 4px 16px rgba(28,45,38,0.1);
-  animation: morphFrame 18s ease-in-out infinite;
-}
-@keyframes morphFrame {
-  0%, 100% { border-radius: 60% 40% 55% 45% / 45% 55% 45% 55%; }
-  33%       { border-radius: 50% 50% 40% 60% / 55% 45% 55% 45%; }
-  66%       { border-radius: 45% 55% 60% 40% / 40% 60% 45% 55%; }
-}
-
-.hero-frame-inner::before {
-  content: '';
-  position: absolute;
-  width: 200px; height: 200px;
-  background: var(--sage-pale);
-  border-radius: 50%;
-  top: -60px; right: -60px;
-  opacity: 0.7;
-}
-
-.hero-scissors-svg {
-  position: relative;
-  z-index: 2;
-}
-.frame-label {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-}
-.frame-label-text {
-  font-size: .65rem;
-  font-weight: 600;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--sage-bg);
-}
-
-/* Rating pill */
-.hero-rating-pill {
-  position: absolute;
-  bottom: -1rem;
-  right: -1rem;
-  background: var(--gold);
-  color: var(--sage-dark);
-  border-radius: 100px;
-  padding: .85rem 1.5rem;
-  box-shadow: 0 8px 24px rgba(212,175,55,0.25);
-  display: flex;
-  align-items: center;
-  gap: .75rem;
-}
-.rating-pill-num {
-  font-family: 'Fraunces', serif;
-  font-size: 1.8rem;
-  font-weight: 600;
-  line-height: 1;
-}
-.rating-pill-stars { font-size: .65rem; letter-spacing: .15em; opacity: .9; }
-.rating-pill-sub {
-  font-size: .55rem;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  opacity: .8;
-  margin-top: .15rem;
-}
-
-/* Floating label top-left */
-.hero-float-badge {
-  position: absolute;
-  top: 1rem;
-  left: -1.5rem;
-  background: rgba(250,250,248,0.95);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(212,175,55,0.3);
-  border-radius: 12px;
-  padding: .75rem 1.1rem;
-  text-align: center;
-  box-shadow: 0 4px 16px rgba(28,45,38,0.15);
-}
-.float-badge-num {
-  font-family: 'Fraunces', serif;
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--sage-bg);
-  line-height: 1;
-}
-.float-badge-label {
-  font-size: .55rem;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--ink-light);
-  margin-top: .2rem;
-}
-
-@keyframes floatIn {
-  from { opacity: 0; transform: translateY(20px) scale(.97); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-/* ── WAVE DIVIDERS ── */
-.wave-section {
-  position: relative;
-  margin-top: -2px;
-}
-.hero-wave path {
-  fill: var(--sage-dark);
-}
+@keyframes floatIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
 
 /* ── STATS STRIP ── */
-.stats-strip {
-  background: var(--sage-dark);
-  padding: 3rem 5rem;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  position: relative;
-}
-.stat-item {
-  text-align: center;
-  color: var(--warm-white);
-}
-.stat-num {
-  font-family: 'Fraunces', serif;
-  font-size: 3rem;
-  font-weight: 600;
-  color: var(--gold);
-  line-height: 1;
-  display: block;
-}
-.stat-sup {
-  font-size: 1.2rem;
-  opacity: .8;
-}
-.stat-label {
-  font-size: .6rem;
-  font-weight: 500;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  opacity: .75;
-  margin-top: .4rem;
-}
+.stats-strip{background:var(--sage-dark);padding:3rem 5rem;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;position:relative}
+.stat-item{text-align:center;color:var(--warm-white)}
+.stat-num{font-family:'Fraunces',serif;font-size:3rem;font-weight:600;color:var(--gold);line-height:1;display:block}
+.stat-sup{font-size:1.2rem;opacity:.8}
+.stat-label{font-size:.6rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;opacity:.75;margin-top:.4rem}
 
 /* ── ABOUT ── */
-.about {
-  background: var(--cream);
-  padding: 8rem 5rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
-  align-items: center;
-  position: relative;
-}
-
-.about-left { position: relative; }
-
-.about-blob-deco {
-  position: absolute;
-  width: 120px; height: 120px;
-  background: var(--sage-pale);
-  border-radius: 60% 40% 70% 30% / 40% 60% 40% 60%;
-  top: -30px; left: -30px;
-  z-index: 0;
-}
-.about-eyebrow {
-  font-size: .6rem;
-  font-weight: 600;
-  letter-spacing: .25em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 1rem;
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: .75rem;
-}
-.about-eyebrow::after {
-  content: '';
-  display: block;
-  height: 1px;
-  width: 30px;
-  background: var(--gold);
-  opacity: .5;
-}
-.about-title {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(2.5rem, 4.5vw, 4rem);
-  font-weight: 600;
-  line-height: 1.05;
-  color: var(--ink);
-  position: relative;
-  z-index: 1;
-  margin-bottom: 1.5rem;
-}
-.about-title em {
-  font-style: italic;
-  color: var(--gold);
-}
-.about-text {
-  font-size: .95rem;
-  line-height: 1.85;
-  color: var(--ink-mid);
-  margin-bottom: 1.25rem;
-  position: relative;
-  z-index: 1;
-}
-.about-text strong { color: var(--sage-bg); font-weight: 600; }
-
-.about-quote-block {
-  margin-top: 2rem;
-  padding: 1.5rem;
-  background: var(--sage-pale);
-  border-radius: 20px;
-  border-left: 3px solid var(--gold);
-  position: relative;
-  z-index: 1;
-}
-.about-quote {
-  font-family: 'Fraunces', serif;
-  font-size: 1.1rem;
-  font-style: italic;
-  font-weight: 400;
-  color: var(--sage-dark);
-  line-height: 1.6;
-}
-
-.about-right {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
-}
-.about-card {
-  background: var(--warm-white);
-  border-radius: 24px;
-  padding: 1.75rem;
-  transition: transform .3s, box-shadow .3s;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(74,117,100,0.05);
-}
-.about-card::before {
-  content: '';
-  position: absolute;
-  width: 80px; height: 80px;
-  border-radius: 50%;
-  background: var(--sage-pale);
-  bottom: -20px; right: -20px;
-  transition: transform .4s ease;
-}
-.about-card:hover::before { transform: scale(2.5); }
-.about-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(28,45,38,0.06); }
-.about-card-icon { font-size: 1.5rem; margin-bottom: 1rem; display: block; }
-.about-card-title {
-  font-family: 'Fraunces', serif;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--sage-dark);
-  margin-bottom: .4rem;
-  position: relative;
-  z-index: 1;
-}
-.about-card-text {
-  font-size: .8rem;
-  color: var(--ink-mid);
-  line-height: 1.6;
-  position: relative;
-  z-index: 1;
-}
-.about-card.featured {
-  background: var(--sage-bg);
-  grid-column: span 2;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  border-radius: 24px;
-}
-.about-card.featured::before { background: rgba(212,175,55,0.15); }
-.about-card.featured .about-card-title { color: var(--gold); }
-.about-card.featured .about-card-text { color: var(--warm-white); opacity: 0.9; }
-.about-card.featured .about-card-icon { font-size: 2rem; flex-shrink: 0; }
+.about{background:var(--cream);padding:8rem 5rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;position:relative}
+.about-left{position:relative}
+.about-blob-deco{position:absolute;width:120px;height:120px;background:var(--sage-pale);border-radius:60% 40% 70% 30%/40% 60% 40% 60%;top:-30px;left:-30px;z-index:0}
+.about-eyebrow{font-size:.6rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;position:relative;z-index:1;display:flex;align-items:center;gap:.75rem}
+.about-eyebrow::after{content:'';display:block;height:1px;width:30px;background:var(--gold);opacity:.5}
+.about-title{font-family:'Fraunces',serif;font-size:clamp(2.5rem,4.5vw,4rem);font-weight:600;line-height:1.05;color:var(--ink);position:relative;z-index:1;margin-bottom:1.5rem}
+.about-title em{font-style:italic;color:var(--gold)}
+.about-text{font-size:.95rem;line-height:1.85;color:var(--ink-mid);margin-bottom:1.25rem;position:relative;z-index:1}
+.about-text strong{color:var(--sage-bg);font-weight:600}
+.about-quote-block{margin-top:2rem;padding:1.5rem;background:var(--sage-pale);border-radius:20px;border-left:3px solid var(--gold);position:relative;z-index:1}
+.about-quote{font-family:'Fraunces',serif;font-size:1.1rem;font-style:italic;font-weight:400;color:var(--sage-dark);line-height:1.6}
+.about-right{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.about-card{background:var(--warm-white);border-radius:24px;padding:1.75rem;transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;border:1px solid rgba(74,117,100,.05)}
+.about-card::before{content:'';position:absolute;width:80px;height:80px;border-radius:50%;background:var(--sage-pale);bottom:-20px;right:-20px;transition:transform .4s ease}
+.about-card:hover::before{transform:scale(2.5)}
+.about-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(28,45,38,.06)}
+.about-card-icon{font-size:1.5rem;margin-bottom:1rem;display:block}
+.about-card-title{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;color:var(--sage-dark);margin-bottom:.4rem;position:relative;z-index:1}
+.about-card-text{font-size:.8rem;color:var(--ink-mid);line-height:1.6;position:relative;z-index:1}
+.about-card.featured{background:var(--sage-bg);grid-column:span 2;display:flex;align-items:center;gap:1.5rem;border-radius:24px}
+.about-card.featured::before{background:rgba(212,175,55,.15)}
+.about-card.featured .about-card-title{color:var(--gold)}
+.about-card.featured .about-card-text{color:var(--warm-white);opacity:.9}
+.about-card.featured .about-card-icon{font-size:2rem;flex-shrink:0}
 
 /* ── SERVICES ── */
-.services {
-  background: var(--sage-pale);
-  padding: 8rem 5rem;
-  position: relative;
-}
+.services{background:var(--sage-pale);padding:8rem 5rem;position:relative}
+.services-header{text-align:center;margin-bottom:4rem}
+.services-eyebrow{font-size:.6rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--sage-bg);margin-bottom:1rem;display:flex;align-items:center;justify-content:center;gap:.75rem}
+.services-eyebrow::before,.services-eyebrow::after{content:'';height:1px;width:40px;background:var(--sage-bg);opacity:.4}
+.services-title{font-family:'Fraunces',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:600;color:var(--ink);line-height:1.05}
+.services-title em{font-style:italic;color:var(--gold)}
+.services-sub{font-size:.9rem;color:var(--ink-light);margin-top:.75rem}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.svc{background:var(--warm-white);border-radius:28px;padding:2.5rem 2rem;position:relative;overflow:hidden;cursor:default;transition:transform .3s,box-shadow .3s;border:1px solid rgba(212,175,55,.08)}
+.svc:nth-child(2){transform:translateY(1.5rem)}
+.svc:nth-child(5){transform:translateY(1.5rem)}
+.svc::after{content:'';position:absolute;width:150px;height:150px;border-radius:50%;background:var(--gold-pale);bottom:-50px;right:-50px;transition:transform .5s ease}
+.svc:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(28,45,38,.08)}
+.svc:nth-child(2):hover{transform:translateY(calc(1.5rem - 6px))}
+.svc:nth-child(5):hover{transform:translateY(calc(1.5rem - 6px))}
+.svc:hover::after{transform:scale(2.5)}
+.svc-num{font-family:'Fraunces',serif;font-size:.8rem;font-style:italic;color:var(--gold);font-weight:600;margin-bottom:1.25rem}
+.svc-icon{font-size:1.75rem;margin-bottom:1.25rem;display:block;position:relative;z-index:1}
+.svc-name{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:600;color:var(--sage-dark);margin-bottom:.6rem;line-height:1.2;position:relative;z-index:1}
+.svc-desc{font-size:.82rem;color:var(--ink-mid);line-height:1.7;margin-bottom:1.5rem;position:relative;z-index:1}
+.svc-price{font-family:'Fraunces',serif;font-size:1.05rem;font-style:italic;font-weight:600;color:var(--gold);display:flex;align-items:center;gap:.5rem;position:relative;z-index:1}
+.svc-price::before{content:'';height:1px;width:20px;background:var(--gold);opacity:.8}
 
-.services-header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-.services-eyebrow {
-  font-size: .6rem;
-  font-weight: 600;
-  letter-spacing: .25em;
-  text-transform: uppercase;
-  color: var(--sage-bg);
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: .75rem;
-}
-.services-eyebrow::before,
-.services-eyebrow::after {
-  content: '';
-  height: 1px;
-  width: 40px;
-  background: var(--sage-bg);
-  opacity: .4;
-}
-.services-title {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 600;
-  color: var(--ink);
-  line-height: 1.05;
-}
-.services-title em { font-style: italic; color: var(--gold); }
-.services-sub {
-  font-size: .9rem;
-  color: var(--ink-light);
-  margin-top: .75rem;
-}
+/* ── TESTIMONIALS CAROUSEL ── */
+.testimonials{background:var(--cream);padding:8rem 5rem;position:relative}
+.testi-header{text-align:center;margin-bottom:4rem}
+.testi-eyebrow{font-size:.6rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--sage-bg);margin-bottom:1rem;display:flex;align-items:center;justify-content:center;gap:.75rem}
+.testi-eyebrow::before,.testi-eyebrow::after{content:'';height:1px;width:30px;background:var(--sage-bg);opacity:.4}
+.testi-title{font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:600;color:var(--ink)}
+.testi-title em{font-style:italic;color:var(--gold)}
+.testi-rating-row{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:1rem}
+.testi-stars{color:var(--gold);font-size:1.1rem;letter-spacing:.1em}
+.testi-score{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:600;color:var(--sage-dark)}
+.testi-count{font-size:.7rem;color:var(--ink-light);letter-spacing:.05em}
 
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-}
+/* Carousel */
+.carousel-outer{position:relative;overflow:hidden;touch-action:pan-y}
+.carousel-track{display:flex;transition:transform .5s cubic-bezier(.25,.46,.45,.94)}
+.testi-card{min-width:calc(33.333% - 1rem);margin-right:1.5rem;background:var(--warm-white);border-radius:28px;padding:2.25rem;position:relative;flex-shrink:0;border:1px solid rgba(74,117,100,.08);transition:transform .3s,box-shadow .3s}
+.testi-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(28,45,38,.06)}
+.testi-card-stars{color:var(--gold);font-size:.75rem;letter-spacing:.12em;margin-bottom:1.25rem}
+.testi-text{font-family:'Fraunces',serif;font-size:1rem;font-style:italic;font-weight:300;color:var(--ink);line-height:1.75;margin-bottom:2rem}
+.testi-author{display:flex;align-items:center;gap:.85rem;border-top:1px solid var(--cream-dark);padding-top:1.25rem}
+.testi-avatar{width:40px;height:40px;background:var(--sage-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:1.1rem;font-style:italic;font-weight:600;color:var(--sage-bg);flex-shrink:0}
+.testi-name{font-size:.82rem;font-weight:600;color:var(--sage-dark)}
+.testi-when{font-size:.65rem;color:var(--ink-light);margin-top:.1rem}
+.testi-badge{position:absolute;top:1.5rem;right:1.5rem;font-size:.52rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--sage-bg);background:var(--sage-pale);border-radius:100px;padding:.35rem .75rem}
 
-.svc {
-  background: var(--warm-white);
-  border-radius: 28px;
-  padding: 2.5rem 2rem;
-  position: relative;
-  overflow: hidden;
-  cursor: default;
-  transition: transform .3s, box-shadow .3s;
-  border: 1px solid rgba(212,175,55,0.08);
-}
-.svc:nth-child(2) { transform: translateY(1.5rem); }
-.svc:nth-child(5) { transform: translateY(1.5rem); }
-.svc::after {
-  content: '';
-  position: absolute;
-  width: 150px; height: 150px;
-  border-radius: 50%;
-  background: var(--gold-pale);
-  bottom: -50px; right: -50px;
-  transition: transform .5s ease;
-}
-.svc:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(28,45,38,0.08); }
-.svc:nth-child(2):hover { transform: translateY(calc(1.5rem - 6px)); }
-.svc:nth-child(5):hover { transform: translateY(calc(1.5rem - 6px)); }
-.svc:hover::after { transform: scale(2.5); }
+/* Carousel controls */
+.carousel-controls{display:flex;align-items:center;justify-content:center;gap:1.5rem;margin-top:2.5rem}
+.c-btn{width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(74,117,100,.2);background:transparent;color:var(--sage-bg);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s}
+.c-btn:hover{border-color:var(--gold);background:rgba(212,175,55,.08);color:var(--gold)}
+.c-btn:disabled{opacity:.25;cursor:default}
+.c-dots{display:flex;gap:.5rem;align-items:center}
+.c-dot{width:7px;height:7px;border-radius:50%;background:rgba(74,117,100,.2);cursor:pointer;transition:all .3s;border:none}
+.c-dot.active{background:var(--gold);transform:scale(1.3)}
 
-.svc-num {
-  font-family: 'Fraunces', serif;
-  font-size: .8rem;
-  font-style: italic;
-  color: var(--gold);
-  font-weight: 600;
-  margin-bottom: 1.25rem;
-}
-.svc-icon {
-  font-size: 1.75rem;
-  margin-bottom: 1.25rem;
-  display: block;
-  position: relative;
-  z-index: 1;
-}
-.svc-name {
-  font-family: 'Fraunces', serif;
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--sage-dark);
-  margin-bottom: .6rem;
-  line-height: 1.2;
-  position: relative;
-  z-index: 1;
-}
-.svc-desc {
-  font-size: .82rem;
-  color: var(--ink-mid);
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
-  position: relative;
-  z-index: 1;
-}
-.svc-price {
-  font-family: 'Fraunces', serif;
-  font-size: 1.05rem;
-  font-style: italic;
-  font-weight: 600;
-  color: var(--gold);
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-  position: relative;
-  z-index: 1;
-}
-.svc-price::before {
-  content: '';
-  height: 1px;
-  width: 20px;
-  background: var(--gold);
-  opacity: .8;
-}
+/* ── BOOKING ── */
+.booking{background:var(--sage-pale);padding:8rem 5rem;position:relative}
+.booking-inner{max-width:860px;margin:0 auto}
+.booking-header{text-align:center;margin-bottom:3rem}
+.booking-eyebrow{font-size:.6rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--sage-bg);margin-bottom:1rem;display:flex;align-items:center;justify-content:center;gap:.75rem}
+.booking-eyebrow::before,.booking-eyebrow::after{content:'';height:1px;width:40px;background:var(--sage-bg);opacity:.4}
+.booking-title{font-family:'Fraunces',serif;font-size:clamp(2rem,4vw,3rem);font-weight:600;color:var(--ink);line-height:1.05}
+.booking-title em{font-style:italic;color:var(--gold)}
+.booking-sub{font-size:.9rem;color:var(--ink-light);margin-top:.75rem;font-style:italic}
 
-/* ── TESTIMONIALS ── */
-.testimonials {
-  background: var(--cream);
-  padding: 8rem 5rem;
-  position: relative;
-}
+/* Steps */
+.steps-row{display:flex;align-items:flex-start;justify-content:center;margin-bottom:3rem;gap:0;flex-wrap:wrap}
+.step-item{display:flex;flex-direction:column;align-items:center;gap:.4rem}
+.step-dot{width:36px;height:36px;border:1.5px solid rgba(74,117,100,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:.9rem;color:var(--ink-light);transition:all .3s;flex-shrink:0;background:var(--warm-white)}
+.step-dot.active{border-color:var(--sage-bg);color:var(--sage-bg);background:var(--sage-pale)}
+.step-dot.done{background:var(--gold);border-color:var(--gold);color:var(--sage-dark)}
+.step-line{height:1.5px;width:60px;background:rgba(74,117,100,.2);margin-top:18px;flex-shrink:0}
+.step-lbl{font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-light);text-align:center}
+.step-item.active .step-lbl{color:var(--sage-bg)}
 
-.testi-header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-.testi-eyebrow {
-  font-size: .6rem;
-  font-weight: 600;
-  letter-spacing: .25em;
-  text-transform: uppercase;
-  color: var(--sage-bg);
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: .75rem;
-}
-.testi-eyebrow::before, .testi-eyebrow::after {
-  content: '';
-  height: 1px;
-  width: 30px;
-  background: var(--sage-bg);
-  opacity: .4;
-}
-.testi-title {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 600;
-  color: var(--ink);
-}
-.testi-title em { font-style: italic; color: var(--gold); }
+.bk-panel{display:none}
+.bk-panel.active{display:block}
 
-/* Rating summary */
-.testi-rating-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: .5rem;
-  margin-top: 1rem;
-}
-.testi-stars { color: var(--gold); font-size: 1.1rem; letter-spacing: .1em; }
-.testi-score {
-  font-family: 'Fraunces', serif;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--sage-dark);
-}
-.testi-count {
-  font-size: .7rem;
-  color: var(--ink-light);
-  letter-spacing: .05em;
-}
+/* Svc grid */
+.bk-svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.1);border-radius:16px;overflow:hidden;margin-bottom:2rem}
+.bk-svc{background:var(--warm-white);padding:1.5rem;cursor:pointer;transition:background .25s;position:relative;border:2px solid transparent}
+.bk-svc:hover{background:var(--sage-pale)}
+.bk-svc.selected{background:rgba(74,117,100,.08);border-color:var(--sage-bg)}
+.bk-check{position:absolute;top:.75rem;right:.75rem;width:18px;height:18px;border-radius:50%;border:1.5px solid rgba(74,117,100,.25);display:flex;align-items:center;justify-content:center;font-size:.6rem;color:transparent;transition:all .25s}
+.bk-svc.selected .bk-check{background:var(--sage-bg);border-color:var(--sage-bg);color:var(--warm-white)}
+.bk-name{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;color:var(--sage-dark);margin-bottom:.3rem}
+.bk-price{font-size:.72rem;color:var(--ink-light)}
+.bk-svc.selected .bk-price{color:var(--sage-bg)}
 
-.testi-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-.testi-card {
-  background: var(--warm-white);
-  border-radius: 28px;
-  padding: 2.25rem;
-  position: relative;
-  transition: transform .3s, box-shadow .3s;
-  border: 1px solid rgba(74,117,100,0.08);
-}
-.testi-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(28,45,38,0.06);
-}
-.testi-card-stars {
-  color: var(--gold);
-  font-size: .75rem;
-  letter-spacing: .12em;
-  margin-bottom: 1.25rem;
-}
-.testi-text {
-  font-family: 'Fraunces', serif;
-  font-size: 1rem;
-  font-style: italic;
-  font-weight: 300;
-  color: var(--ink);
-  line-height: 1.75;
-  margin-bottom: 2rem;
-}
-.testi-author {
-  display: flex;
-  align-items: center;
-  gap: .85rem;
-  border-top: 1px solid var(--cream-dark);
-  padding-top: 1.25rem;
-}
-.testi-avatar {
-  width: 40px; height: 40px;
-  background: var(--sage-pale);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Fraunces', serif;
-  font-size: 1.1rem;
-  font-style: italic;
-  font-weight: 600;
-  color: var(--sage-bg);
-  flex-shrink: 0;
-}
-.testi-name { font-size: .82rem; font-weight: 600; color: var(--sage-dark); }
-.testi-when { font-size: .65rem; color: var(--ink-light); margin-top: .1rem; }
-.testi-badge {
-  position: absolute;
-  top: 1.5rem; right: 1.5rem;
-  font-size: .52rem;
-  font-weight: 600;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  color: var(--sage-bg);
-  background: var(--sage-pale);
-  border-radius: 100px;
-  padding: .35rem .75rem;
-}
+/* Calendar */
+.cal-wrap{margin-bottom:2rem;background:var(--warm-white);border-radius:20px;padding:2rem}
+.cal-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem}
+.cal-month-lbl{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:400;font-style:italic;color:var(--sage-dark)}
+.cal-arr{width:38px;height:38px;border:1.5px solid rgba(74,117,100,.2);border-radius:50%;background:transparent;color:var(--sage-bg);cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all .25s}
+.cal-arr:hover{border-color:var(--gold);background:rgba(212,175,55,.08);color:var(--gold)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal-day-lbl{font-size:.5rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);text-align:center;padding:.5rem 0}
+.cal-day{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-size:.85rem;color:rgba(28,45,38,.25);cursor:default;border-radius:50%;transition:all .2s;position:relative}
+.cal-day.available{color:var(--ink);cursor:pointer}
+.cal-day.available:hover{background:var(--sage-pale);color:var(--sage-bg)}
+.cal-day.selected{background:var(--sage-bg)!important;color:var(--warm-white)!important}
+.cal-day.today::after{content:'';position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:var(--gold)}
+.cal-day.past{opacity:.2}
+
+/* Time slots */
+.time-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:2rem}
+.time-slot{padding:.9rem .5rem;text-align:center;font-family:'Fraunces',serif;font-size:.9rem;border:1.5px solid rgba(74,117,100,.15);border-radius:12px;cursor:pointer;transition:all .25s;color:var(--ink);background:var(--warm-white)}
+.time-slot.booked{color:var(--ink-light);border-color:rgba(28,45,38,.06);cursor:not-allowed;background:rgba(28,45,38,.03);text-decoration:line-through;opacity:.5}
+.time-slot.available:hover{border-color:var(--gold);background:rgba(212,175,55,.06);color:var(--sage-dark)}
+.time-slot.selected{background:var(--sage-bg);color:var(--warm-white);border-color:var(--sage-bg)}
+.slot-st{display:block;font-family:'Outfit',sans-serif;font-size:.42rem;letter-spacing:.1em;text-transform:uppercase;margin-top:.2rem;opacity:.6}
+
+/* Confirm */
+.confirm-box{background:var(--warm-white);border-radius:20px;padding:2rem;margin-bottom:2rem;border:1px solid rgba(212,175,55,.15)}
+.confirm-ttl{font-size:.58rem;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--sage-bg);margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid rgba(74,117,100,.1)}
+.confirm-row{display:flex;justify-content:space-between;align-items:center;padding:.7rem 0;border-bottom:1px solid rgba(74,117,100,.06)}
+.confirm-row:last-child{border-bottom:none}
+.cr-lbl{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-light)}
+.cr-val{font-family:'Fraunces',serif;font-size:1rem;font-style:italic;color:var(--sage-dark)}
+
+/* Form fields */
+.bk-form{display:flex;flex-direction:column;gap:1.25rem}
+.bk-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.bk-field{display:flex;flex-direction:column;gap:.4rem}
+.bk-field label{font-size:.58rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-light)}
+.bk-field input{background:var(--warm-white);border:1.5px solid rgba(74,117,100,.15);border-radius:12px;padding:.85rem 1rem;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:300;color:var(--ink);outline:none;transition:border-color .3s}
+.bk-field input:focus{border-color:var(--sage-bg)}
+.bk-field input::placeholder{color:var(--ink-light);opacity:.5}
+
+/* Nav btns */
+.bk-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2rem;flex-wrap:wrap;gap:1rem}
+.btn-bk-back{font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;background:transparent;border:1.5px solid rgba(74,117,100,.2);border-radius:100px;color:var(--ink-light);padding:.8rem 1.75rem;cursor:pointer;transition:all .25s}
+.btn-bk-back:hover{border-color:var(--sage-bg);color:var(--sage-bg)}
+.btn-bk-next{font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;background:var(--sage-bg);color:var(--warm-white);border:none;border-radius:100px;padding:.9rem 2rem;cursor:pointer;transition:background .25s,transform .2s}
+.btn-bk-next:hover{background:var(--sage-dark);transform:translateY(-1px)}
+
+/* Success */
+.bk-success{display:none;text-align:center;padding:4rem 2rem;background:var(--warm-white);border-radius:28px}
+.bk-success-icon{font-size:3rem;margin-bottom:1.5rem;display:block}
+.bk-success-title{font-family:'Fraunces',serif;font-size:2.5rem;font-weight:600;font-style:italic;color:var(--sage-dark);margin-bottom:1rem}
+.bk-success-sub{font-size:.95rem;color:var(--ink-mid);font-style:italic}
 
 /* ── CONTACT ── */
-.contact {
-  background: var(--sage-dark);
-  padding: 8rem 5rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Organic blob deco */
-.contact-blob {
-  position: absolute;
-  width: 500px; height: 500px;
-  background: rgba(212,175,55,0.05);
-  border-radius: 61% 39% 55% 45% / 43% 57% 43% 57%;
-  top: -100px; right: -100px;
-  pointer-events: none;
-  animation: morph1 20s ease-in-out infinite;
-}
-.contact-blob-2 {
-  position: absolute;
-  width: 300px; height: 300px;
-  background: rgba(255,255,255,0.03);
-  border-radius: 43% 57% 43% 57% / 61% 39% 61% 39%;
-  bottom: -80px; left: 40%;
-  pointer-events: none;
-  animation: morph2 18s ease-in-out infinite;
-}
-
-.contact-left { position: relative; z-index: 2; }
-
-.contact-eyebrow {
-  font-size: .6rem;
-  font-weight: 500;
-  letter-spacing: .25em;
-  text-transform: uppercase;
-  color: var(--gold-light);
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: .75rem;
-}
-.contact-eyebrow::after {
-  content: '';
-  height: 1px;
-  width: 25px;
-  background: var(--gold-light);
-  opacity: .5;
-}
-.contact-title {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(2.5rem, 4.5vw, 4rem);
-  font-weight: 600;
-  line-height: 1.05;
-  color: var(--warm-white);
-  margin-bottom: 3rem;
-}
-.contact-title em { font-style: italic; color: var(--gold); }
-
-.contact-items {
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
-}
-.ci {
-  display: flex;
-  gap: 1.25rem;
-  align-items: flex-start;
-  transition: transform .25s;
-}
-.ci:hover { transform: translateX(4px); }
-.ci-icon {
-  width: 44px; height: 44px;
-  background: rgba(255,255,255,0.05);
-  border-radius: 14px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.1rem;
-  flex-shrink: 0;
-  border: 1px solid rgba(212,175,55,0.2);
-  transition: background .25s, border-color .25s;
-  color: var(--gold);
-}
-.ci:hover .ci-icon {
-  background: rgba(212,175,55,0.15);
-  border-color: rgba(212,175,55,0.4);
-}
-.ci-label {
-  font-size: .55rem;
-  font-weight: 500;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: rgba(250,250,248,0.5);
-  margin-bottom: .3rem;
-}
-.ci-value {
-  font-size: .95rem;
-  color: var(--warm-white);
-  line-height: 1.5;
-}
-.ci-value a {
-  color: var(--gold-light);
-  text-decoration: none;
-  transition: color .2s;
-}
-.ci-value a:hover { color: var(--gold); }
-
-.contact-socials {
-  display: flex;
-  gap: .75rem;
-  flex-wrap: wrap;
-  margin-top: 2.5rem;
-}
-.social-pill {
-  font-size: .62rem;
-  font-weight: 500;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  border: 1px solid rgba(255,255,255,0.15);
-  color: rgba(250,250,248,0.7);
-  border-radius: 100px;
-  padding: .5rem 1.1rem;
-  text-decoration: none;
-  transition: border-color .25s, color .25s, background .25s;
-}
-.social-pill:hover {
-  border-color: var(--gold);
-  color: var(--gold);
-  background: rgba(212,175,55,0.1);
-}
-
-.contact-right { position: relative; z-index: 2; }
-
-.form-title {
-  font-family: 'Fraunces', serif;
-  font-size: 1.6rem;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--warm-white);
-  margin-bottom: 2rem;
-}
-
-.cform { display: flex; flex-direction: column; gap: 1.5rem; }
-.cform-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-
-.cfield { display: flex; flex-direction: column; gap: .4rem; }
-.cfield label {
-  font-size: .58rem;
-  font-weight: 500;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: rgba(250,250,248,0.6);
-}
-.cfield input, .cfield textarea, .cfield select {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 12px;
-  padding: .85rem 1rem;
-  font-family: 'Outfit', sans-serif;
-  font-size: .9rem;
-  font-weight: 300;
-  color: var(--warm-white);
-  outline: none;
-  transition: border-color .3s, background .3s;
-  resize: none;
-  appearance: none;
-  -webkit-appearance: none;
-}
-.cfield input:focus, .cfield textarea:focus, .cfield select:focus {
-  border-color: rgba(212,175,55,0.5);
-  background: rgba(212,175,55,0.05);
-}
-.cfield input::placeholder, .cfield textarea::placeholder {
-  color: rgba(250,250,248,0.3);
-}
-.cfield select option { background: var(--sage-dark); color: var(--warm-white); }
-
-.csubmit {
-  background: var(--gold);
-  color: var(--sage-dark);
-  border: none;
-  border-radius: 100px;
-  padding: 1rem 2.5rem;
-  font-family: 'Outfit', sans-serif;
-  font-size: .75rem;
-  font-weight: 600;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  cursor: pointer;
-  align-self: flex-start;
-  margin-top: .25rem;
-  transition: background .25s, transform .2s, box-shadow .25s;
-}
-.csubmit:hover {
-  background: var(--gold-light);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(212,175,55,0.25);
-}
+.contact{background:var(--sage-dark);padding:8rem 5rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;position:relative;overflow:hidden}
+.contact-blob{position:absolute;width:500px;height:500px;background:rgba(212,175,55,.05);border-radius:61% 39% 55% 45%/43% 57% 43% 57%;top:-100px;right:-100px;pointer-events:none;animation:morph1 20s ease-in-out infinite}
+.contact-blob-2{position:absolute;width:300px;height:300px;background:rgba(255,255,255,.03);border-radius:43% 57% 43% 57%/61% 39% 61% 39%;bottom:-80px;left:40%;pointer-events:none;animation:morph2 18s ease-in-out infinite}
+.contact-left{position:relative;z-index:2}
+.contact-eyebrow{font-size:.6rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--gold-light);margin-bottom:1rem;display:flex;align-items:center;gap:.75rem}
+.contact-eyebrow::after{content:'';height:1px;width:25px;background:var(--gold-light);opacity:.5}
+.contact-title{font-family:'Fraunces',serif;font-size:clamp(2.5rem,4.5vw,4rem);font-weight:600;line-height:1.05;color:var(--warm-white);margin-bottom:3rem}
+.contact-title em{font-style:italic;color:var(--gold)}
+.contact-items{display:flex;flex-direction:column;gap:1.75rem}
+.ci{display:flex;gap:1.25rem;align-items:flex-start;transition:transform .25s}
+.ci:hover{transform:translateX(4px)}
+.ci-icon{width:44px;height:44px;background:rgba(255,255,255,.05);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;border:1px solid rgba(212,175,55,.2);transition:background .25s,border-color .25s}
+.ci:hover .ci-icon{background:rgba(212,175,55,.15);border-color:rgba(212,175,55,.4)}
+.ci-label{font-size:.55rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,250,248,.5);margin-bottom:.3rem}
+.ci-value{font-size:.95rem;color:var(--warm-white);line-height:1.5}
+.ci-value a{color:var(--gold-light);text-decoration:none;transition:color .2s}
+.ci-value a:hover{color:var(--gold)}
+.contact-socials{display:flex;gap:.75rem;flex-wrap:wrap;margin-top:2.5rem}
+.social-pill{font-size:.62rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,.15);color:rgba(250,250,248,.7);border-radius:100px;padding:.5rem 1.1rem;text-decoration:none;transition:all .25s}
+.social-pill:hover{border-color:var(--gold);color:var(--gold);background:rgba(212,175,55,.1)}
+.contact-right{position:relative;z-index:2}
+.form-title{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:400;font-style:italic;color:var(--warm-white);margin-bottom:2rem}
+.cform{display:flex;flex-direction:column;gap:1.5rem}
+.cform-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.cfield{display:flex;flex-direction:column;gap:.4rem}
+.cfield label{font-size:.58rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,250,248,.6)}
+.cfield input,.cfield textarea,.cfield select{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:.85rem 1rem;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:300;color:var(--warm-white);outline:none;transition:border-color .3s,background .3s;resize:none;appearance:none;-webkit-appearance:none}
+.cfield input:focus,.cfield textarea:focus,.cfield select:focus{border-color:rgba(212,175,55,.5);background:rgba(212,175,55,.05)}
+.cfield input::placeholder,.cfield textarea::placeholder{color:rgba(250,250,248,.3)}
+.cfield select option{background:var(--sage-dark);color:var(--warm-white)}
+.csubmit{background:var(--gold);color:var(--sage-dark);border:none;border-radius:100px;padding:1rem 2.5rem;font-family:'Outfit',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;align-self:flex-start;margin-top:.25rem;transition:background .25s,transform .2s,box-shadow .25s}
+.csubmit:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,175,55,.25)}
 
 /* ── FOOTER ── */
-footer {
-  background: var(--ink);
-  padding: 2rem 5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-.footer-logo {
-  font-family: 'Fraunces', serif;
-  font-size: 1.2rem;
-  font-weight: 400;
-  font-style: italic;
-  color: var(--gold);
-  letter-spacing: .05em;
-  text-transform: uppercase;
-}
-.footer-copy {
-  font-size: .6rem;
-  font-weight: 500;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  color: rgba(250,250,248,0.4);
-}
-.footer-links { display: flex; gap: 1.75rem; }
-.footer-links a {
-  font-size: .6rem;
-  font-weight: 500;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: rgba(250,250,248,0.5);
-  text-decoration: none;
-  transition: color .25s;
-}
-.footer-links a:hover { color: var(--gold); }
+footer{background:var(--ink);padding:2rem 5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.footer-logo{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:400;font-style:italic;color:var(--gold);letter-spacing:.05em;text-transform:uppercase}
+.footer-copy{font-size:.6rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:rgba(250,250,248,.4)}
+.footer-links{display:flex;gap:1.75rem}
+.footer-links a{font-size:.6rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(250,250,248,.5);text-decoration:none;transition:color .25s}
+.footer-links a:hover{color:var(--gold)}
 
 /* ── REVEAL ── */
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .85s ease, transform .85s ease;
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .85s ease,transform .85s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
 
 /* ── RESPONSIVE ── */
-@media (max-width: 1024px) {
-  .hero { grid-template-columns: 1fr; }
-  .hero-right { display: none; }
-  .hero-left { padding: 10rem 3rem 5rem; }
+@media(max-width:1024px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .hero-left{padding:10rem 3rem 5rem}
+  .bk-svc-grid{grid-template-columns:repeat(2,1fr)}
+  .time-grid{grid-template-columns:repeat(3,1fr)}
 }
-@media (max-width: 900px) {
-  nav {
-    top: auto; bottom: 1.25rem;
-    left: 1rem; right: 1rem;
-    transform: none;
-    border-radius: 20px;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: .5rem;
-    padding: 1rem;
+@media(max-width:900px){
+    nav{
+    top:0;
+    left:0;
+    right:0;
+    bottom:auto;
+    transform:none;
+    border-radius:0;
+    border-left:none;
+    border-right:none;
+    border-top:none;
+    padding:.75rem 1.25rem;
+    gap:.75rem;
+    width:100%;
+    justify-content:space-between;
   }
-  .nav-links { display: none; }
-  .nav-dot { display: none; }
-  .hero-left { padding: 5rem 1.5rem 4rem; }
-  .stats-strip { grid-template-columns: 1fr 1fr; padding: 3rem 1.5rem; gap: 1.5rem; }
-  .about { grid-template-columns: 1fr; padding: 5rem 1.5rem; gap: 3rem; }
-  .about-right { grid-template-columns: 1fr 1fr; }
-  .about-card.featured { grid-column: span 2; flex-direction: column; }
-  .services { padding: 5rem 1.5rem; }
-  .services-grid { grid-template-columns: 1fr; }
-  .svc:nth-child(2), .svc:nth-child(5) { transform: translateY(0); }
-  .svc:nth-child(2):hover, .svc:nth-child(5):hover { transform: translateY(-6px); }
-  .testimonials { padding: 5rem 1.5rem; }
-  .testi-grid { grid-template-columns: 1fr; }
-  .contact { grid-template-columns: 1fr; padding: 5rem 1.5rem; gap: 3rem; }
-  .cform-row { grid-template-columns: 1fr; }
-  footer { padding: 1.5rem; flex-direction: column; text-align: center; }
-  .footer-links { justify-content: center; }
+  .nav-dot,.nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .hero-left{padding:6rem 1.5rem 4rem}
+  .hero-name{font-size:clamp(4rem,14vw,6rem)}
+  .stats-strip{grid-template-columns:1fr 1fr;padding:3rem 1.5rem;gap:1.5rem}
+  .about{grid-template-columns:1fr;padding:5rem 1.5rem;gap:3rem}
+  .about-right{grid-template-columns:1fr 1fr}
+  .about-card.featured{grid-column:span 2;flex-direction:column}
+  .services{padding:5rem 1.5rem}
+  .services-grid{grid-template-columns:1fr}
+  .svc:nth-child(2),.svc:nth-child(5){transform:translateY(0)}
+  .svc:nth-child(2):hover,.svc:nth-child(5):hover{transform:translateY(-6px)}
+  .testimonials{padding:5rem 1.5rem}
+  .testi-card{min-width:calc(100% - 0px);margin-right:0}
+  .booking{padding:5rem 1.5rem}
+  .bk-svc-grid{grid-template-columns:1fr}
+  .time-grid{grid-template-columns:repeat(2,1fr)}
+  .bk-row{grid-template-columns:1fr}
+  .steps-row{gap:.25rem}
+  .step-line{width:30px}
+  .contact{grid-template-columns:1fr;padding:5rem 1.5rem;gap:3rem}
+  .cform-row{grid-template-columns:1fr}
+  footer{padding:1.5rem;flex-direction:column;text-align:center}
+  .footer-links{justify-content:center;flex-wrap:wrap}
+}
+@media(max-width:480px){
+  .hero-name{font-size:clamp(3.5rem,16vw,5rem)}
+  .time-grid{grid-template-columns:repeat(2,1fr)}
+  .about-right{grid-template-columns:1fr}
+  .about-card.featured{grid-column:span 1}
+}
+.mobile-menu-logo{
+  font-family:'Fraunces',serif;
+  font-size:1.5rem;
+  font-weight:400;
+  font-style:italic;
+  text-transform:uppercase;
+  color:var(--gold);
+  letter-spacing:.08em;
+  margin-bottom:.5rem;
 }
 </style>
 </head>
 <body>
 
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <span class="mobile-menu-logo">Saškica</span>
+  <a href="#about" onclick="closeMob()">O nama</a>
+  <div class="mobile-menu-divider"></div>
+  <a href="#services" onclick="closeMob()">Usluge</a>
+  <div class="mobile-menu-divider"></div>
+  <a href="#testimonials" onclick="closeMob()">Utisci</a>
+  <div class="mobile-menu-divider"></div>
+  <a href="#booking" onclick="closeMob()">Zakazivanje</a>
+  <div class="mobile-menu-divider"></div>
+  <a href="#contact" onclick="closeMob()">Kontakt</a>
+  <a href="#booking" class="mobile-menu-cta" onclick="closeMob()">Zakaži termin</a>
+</div>
+
+<!-- NAV -->
 <nav id="nav">
   <a href="#" class="nav-logo">Saškica</a>
   <div class="nav-dot"></div>
   <ul class="nav-links">
     <li><a href="#services">Usluge</a></li>
+    <li><a href="#booking">Zakazivanje</a></li>
     <li><a href="#testimonials">Utisci</a></li>
     <li><a href="#contact">Kontakt</a></li>
   </ul>
-  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Zakaži</button>
+  <button class="nav-cta" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Zakaži</button>
+  <button class="hamburger" id="hamburger" onclick="toggleMob()" aria-label="Meni">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="blob-wrap">
     <div class="hero-blob-1"></div>
     <div class="hero-blob-2"></div>
     <div class="hero-dots"></div>
   </div>
-
   <div class="hero-left">
     <div class="hero-tag">
       <span class="hero-tag-dot"></span>
       <span class="hero-tag-text">Frizerski studio · Novi Sad</span>
     </div>
-
     <div class="hero-title">
       <span class="hero-title-script">dobrodošli u</span>
-      <h1 class="hero-name">
-        Saš<span class="soft">ki</span><span class="outline">ca</span>
-      </h1>
+      <h1 class="hero-name">Saš<span class="soft">ki</span><span class="outline">ca</span></h1>
     </div>
-
-    <p class="hero-tagline">
-      Mesto gde svaka klijentkinja postaje<br>
-      najlepša verzija sebe.
-    </p>
-
+    <p class="hero-tagline">Mesto gde svaka klijentkinja postaje<br>najlepša verzija sebe.</p>
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Zakaži termin</a>
+      <a href="#booking" class="btn-primary">Zakaži termin</a>
       <a href="#services" class="btn-outline">Naše usluge ↓</a>
     </div>
   </div>
-
   <div class="hero-right">
     <div class="hero-frame">
-      <div class="hero-float-badge">
-        <div class="float-badge-num">98</div>
-        <div class="float-badge-label">Recenzija</div>
-      </div>
-
+      <div class="hero-float-badge"><div class="float-badge-num">98</div><div class="float-badge-label">Recenzija</div></div>
       <div class="hero-frame-inner">
         <svg class="hero-scissors-svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
-          <circle cx="28" cy="28" r="14" stroke="#D4AF37" stroke-width="1.5" fill="none" opacity="0.8"/>
-          <circle cx="28" cy="72" r="14" stroke="#D4AF37" stroke-width="1.5" fill="none" opacity="0.8"/>
-          <circle cx="28" cy="28" r="5" fill="#D4AF37" opacity="0.5"/>
-          <circle cx="28" cy="72" r="5" fill="#D4AF37" opacity="0.5"/>
-          <line x1="38" y1="22" x2="88" y2="80" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
-          <line x1="38" y1="78" x2="88" y2="20" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
-          <circle cx="63" cy="50" r="4" fill="#4A7564" opacity="0.9"/>
+          <circle cx="28" cy="28" r="14" stroke="#D4AF37" stroke-width="1.5" fill="none" opacity=".8"/>
+          <circle cx="28" cy="72" r="14" stroke="#D4AF37" stroke-width="1.5" fill="none" opacity=".8"/>
+          <circle cx="28" cy="28" r="5" fill="#D4AF37" opacity=".5"/>
+          <circle cx="28" cy="72" r="5" fill="#D4AF37" opacity=".5"/>
+          <line x1="38" y1="22" x2="88" y2="80" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" opacity=".8"/>
+          <line x1="38" y1="78" x2="88" y2="20" stroke="#D4AF37" stroke-width="1.5" stroke-linecap="round" opacity=".8"/>
+          <circle cx="63" cy="50" r="4" fill="#4A7564" opacity=".9"/>
         </svg>
-        <div class="frame-label">
-          <p class="frame-label-text">Vaša frizerka</p>
-        </div>
+        <div class="frame-label"><p class="frame-label-text">Vaša frizerka</p></div>
       </div>
-
       <div class="hero-rating-pill">
         <div class="rating-pill-num">4.6</div>
-        <div class="rating-pill-info">
-          <div class="rating-pill-stars">★★★★★</div>
-          <div class="rating-pill-sub">Google ocena</div>
-        </div>
+        <div class="rating-pill-info"><div class="rating-pill-stars">★★★★★</div><div class="rating-pill-sub">Google ocena</div></div>
       </div>
     </div>
   </div>
-
   <svg class="hero-wave" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z"/>
   </svg>
 </section>
 
+<!-- STATS -->
 <div class="stats-strip">
-  <div class="stat-item reveal">
-    <span class="stat-num">4.6<span class="stat-sup">★</span></span>
-    <span class="stat-label">Google ocena</span>
-  </div>
-  <div class="stat-item reveal">
-    <span class="stat-num">98<span class="stat-sup">+</span></span>
-    <span class="stat-label">Zadovoljnih klijenata</span>
-  </div>
-  <div class="stat-item reveal">
-    <span class="stat-num">8<span class="stat-sup">+</span></span>
-    <span class="stat-label">Godina iskustva</span>
-  </div>
-  <div class="stat-item reveal">
-    <span class="stat-num">100<span class="stat-sup">%</span></span>
-    <span class="stat-label">Posvećenost</span>
-  </div>
+  <div class="stat-item reveal"><span class="stat-num">4.6<span class="stat-sup">★</span></span><span class="stat-label">Google ocena</span></div>
+  <div class="stat-item reveal"><span class="stat-num">98<span class="stat-sup">+</span></span><span class="stat-label">Zadovoljnih klijenata</span></div>
+  <div class="stat-item reveal"><span class="stat-num">8<span class="stat-sup">+</span></span><span class="stat-label">Godina iskustva</span></div>
+  <div class="stat-item reveal"><span class="stat-num">100<span class="stat-sup">%</span></span><span class="stat-label">Posvećenost</span></div>
 </div>
 
+<!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-left">
     <div class="about-blob-deco"></div>
     <p class="about-eyebrow reveal">O nama</p>
     <h2 class="about-title reveal">Više od<br><em>frizure</em></h2>
-    <p class="about-text reveal">
-      <strong>Saškica Hair Studio</strong> je luksuzni frizerski salon u Novom Sadu gde se svaka klijentka oseća kao kod kuće. Naš salon nije samo mesto za šišanje — to je prostor odmora, brige i lepote.
-    </p>
-    <p class="about-text reveal">
-      Posvećene smo svakom detalju, od prvog pozdrava do poslednjeg pogleda u ogledalo. Zato nas naše klijentkinje biraju iznova i iznova.
-    </p>
-    <div class="about-quote-block reveal">
-      <p class="about-quote">"Lepota počinje onog momenta kada odlučiš da budeš svoja — mi smo tu da ti pomognemo da zasijaš."</p>
-    </div>
+    <p class="about-text reveal"><strong>Saškica Hair Studio</strong> je frizerski salon u Novom Sadu gde se svaka klijentka oseća kao kod kuće. Naš salon nije samo mesto za šišanje — to je prostor odmora, brige i lepote.</p>
+    <p class="about-text reveal">Posvećene smo svakom detalju, od prvog pozdrava do poslednjeg pogleda u ogledalo. Zato nas naše klijentkinje biraju iznova i iznova.</p>
+    <div class="about-quote-block reveal"><p class="about-quote">"Lepota počinje onog momenta kada odlučiš da budeš svoja — mi smo tu da ti pomognemo da zasijaš."</p></div>
   </div>
-
   <div class="about-right reveal">
-    <div class="about-card">
-      <span class="about-card-icon">🌿</span>
-      <h3 class="about-card-title">Topla atmosfera</h3>
-      <p class="about-card-text">Salon dizajniran da se osećate potpuno opušteno od trenutka kada uđete.</p>
-    </div>
-    <div class="about-card">
-      <span class="about-card-icon">✨</span>
-      <h3 class="about-card-title">Premium proizvodi</h3>
-      <p class="about-card-text">Koristimo samo profesionalne proizvode vrhunskog kvaliteta.</p>
-    </div>
-    <div class="about-card">
-      <span class="about-card-icon">💝</span>
-      <h3 class="about-card-title">Pažnja na detalje</h3>
-      <p class="about-card-text">Svaka poseta je personalizovana upravo za vas i vašu kosu.</p>
-    </div>
-    <div class="about-card featured">
-      <span class="about-card-icon">⭐</span>
-      <div>
-        <h3 class="about-card-title">4.6★ na Google-u</h3>
-        <p class="about-card-text">98+ iskrenih recenzija zadovoljnih klijentkinja potvrđuju naš kvalitet i posvećenost.</p>
-      </div>
-    </div>
+    <div class="about-card"><span class="about-card-icon">🌿</span><h3 class="about-card-title">Topla atmosfera</h3><p class="about-card-text">Salon dizajniran da se osećate potpuno opušteno od trenutka kada uđete.</p></div>
+    <div class="about-card"><span class="about-card-icon">✨</span><h3 class="about-card-title">Premium proizvodi</h3><p class="about-card-text">Koristimo samo profesionalne proizvode vrhunskog kvaliteta.</p></div>
+    <div class="about-card"><span class="about-card-icon">💝</span><h3 class="about-card-title">Pažnja na detalje</h3><p class="about-card-text">Svaka poseta je personalizovana upravo za vas i vašu kosu.</p></div>
+    <div class="about-card featured"><span class="about-card-icon">⭐</span><div><h3 class="about-card-title">4.6★ na Google-u</h3><p class="about-card-text">98+ iskrenih recenzija zadovoljnih klijentkinja potvrđuju naš kvalitet i posvećenost.</p></div></div>
   </div>
 </section>
 
+<!-- SERVICES -->
 <section class="services" id="services">
   <div class="services-header">
     <p class="services-eyebrow reveal">Šta nudimo</p>
     <h2 class="services-title reveal">Naše <em>usluge</em></h2>
     <p class="services-sub reveal">Svaka usluga prilagođena vašim potrebama i vašoj kosi.</p>
   </div>
-
   <div class="services-grid">
-    <div class="svc reveal">
-      <p class="svc-num">— 01</p>
-      <span class="svc-icon">✂️</span>
-      <h3 class="svc-name">Šišanje & Oblikovanje</h3>
-      <p class="svc-desc">Precizni rezovi za sve tipove kose, prilagođeni obliku vašeg lica i vašem stilu. Kratka, duga, ravna ili kovrdžava.</p>
-      <span class="svc-price">od 1.500 rsd</span>
-    </div>
-
-    <div class="svc reveal">
-      <p class="svc-num">— 02</p>
-      <span class="svc-icon">🎨</span>
-      <h3 class="svc-name">Bojenje & Balayage</h3>
-      <p class="svc-desc">Cela boja, highlights ili prirodni balayage prelazi koji izgledaju kao da ste proveli leto na suncu. Boja koja sjaji.</p>
-      <span class="svc-price">od 3.500 rsd</span>
-    </div>
-
-    <div class="svc reveal">
-      <p class="svc-num">— 03</p>
-      <span class="svc-icon">🌿</span>
-      <h3 class="svc-name">Nega & Tretmani</h3>
-      <p class="svc-desc">Keratin, botoks za kosu, dubinska hidratacija. Vraćamo zdravlje i sjaj svakom tipu kose koji je bio izložen stresu.</p>
-      <span class="svc-price">od 2.500 rsd</span>
-    </div>
-
-    <div class="svc reveal">
-      <p class="svc-num">— 04</p>
-      <span class="svc-icon">💐</span>
-      <h3 class="svc-name">Svečane Frizure</h3>
-      <p class="svc-desc">Za vaš poseban dan — venčanje, proslava, matura. Punđe, pletenice i glamurozne stilizacije koje traju čitav dan.</p>
-      <span class="svc-price">od 3.500 rsd</span>
-    </div>
-
-    <div class="svc reveal">
-      <p class="svc-num">— 05</p>
-      <span class="svc-icon">🌊</span>
-      <h3 class="svc-name">Trajni Talasi</h3>
-      <p class="svc-desc">Definisane kovrdže i talasi koji traju mesecima. Volumen i tekstura prilagođeni vašem licu i tipu kose.</p>
-      <span class="svc-price">od 4.000 rsd</span>
-    </div>
-
-    <div class="svc reveal">
-      <p class="svc-num">— 06</p>
-      <span class="svc-icon">✨</span>
-      <h3 class="svc-name">Feniranje & Styling</h3>
-      <p class="svc-desc">Savršeno feniranje i stilizacija za svaki izlazak ili poslovni dan. Glatko, voluminozno ili sa zavojima — vi birate.</p>
-      <span class="svc-price">od 1.200 rsd</span>
-    </div>
+    <div class="svc reveal"><p class="svc-num">— 01</p><span class="svc-icon">✂️</span><h3 class="svc-name">Šišanje &amp; Oblikovanje</h3><p class="svc-desc">Precizni rezovi za sve tipove kose, prilagođeni obliku vašeg lica i vašem stilu.</p><span class="svc-price">od 1.500 rsd</span></div>
+    <div class="svc reveal"><p class="svc-num">— 02</p><span class="svc-icon">🎨</span><h3 class="svc-name">Bojenje &amp; Balayage</h3><p class="svc-desc">Cela boja, highlights ili prirodni balayage prelazi. Boja koja sjaji.</p><span class="svc-price">od 3.500 rsd</span></div>
+    <div class="svc reveal"><p class="svc-num">— 03</p><span class="svc-icon">🌿</span><h3 class="svc-name">Nega &amp; Tretmani</h3><p class="svc-desc">Keratin, botoks za kosu, dubinska hidratacija. Vraćamo zdravlje i sjaj vašoj kosi.</p><span class="svc-price">od 2.500 rsd</span></div>
+    <div class="svc reveal"><p class="svc-num">— 04</p><span class="svc-icon">💐</span><h3 class="svc-name">Svečane Frizure</h3><p class="svc-desc">Za vaš poseban dan — venčanje, proslava, matura. Glamurozne stilizacije koje traju.</p><span class="svc-price">od 3.500 rsd</span></div>
+    <div class="svc reveal"><p class="svc-num">— 05</p><span class="svc-icon">🌊</span><h3 class="svc-name">Trajni Talasi</h3><p class="svc-desc">Definisane kovrdže i talasi koji traju mesecima. Volumen prilagođen vašem licu.</p><span class="svc-price">od 4.000 rsd</span></div>
+    <div class="svc reveal"><p class="svc-num">— 06</p><span class="svc-icon">✨</span><h3 class="svc-name">Feniranje &amp; Styling</h3><p class="svc-desc">Savršeno feniranje za svaki izlazak ili poslovni dan. Glatko, voluminozno ili sa zavojima.</p><span class="svc-price">od 1.200 rsd</span></div>
   </div>
 </section>
 
+<!-- TESTIMONIALS CAROUSEL -->
 <section class="testimonials" id="testimonials">
   <div class="testi-header">
     <p class="testi-eyebrow reveal">Utisci</p>
@@ -1367,124 +528,155 @@ footer {
     </div>
   </div>
 
-  <div class="testi-grid">
-    <div class="testi-card reveal">
-      <span class="testi-badge">Google</span>
-      <div class="testi-card-stars">★★★★★</div>
-      <p class="testi-text">"Pronašla sam svoje frizersko okrilje! Saška je čudesna — razumela je šta hoću bez puno reči i rezultat je bio savršen. Atmosfera je topla i prijatna. Dolazim svaki mesec!"</p>
-      <div class="testi-author">
-        <div class="testi-avatar">J</div>
-        <div>
-          <p class="testi-name">Jelena P.</p>
-          <p class="testi-when">Pre mesec dana</p>
-        </div>
-      </div>
+  <div class="carousel-outer" id="carouselOuter">
+    <div class="carousel-track" id="carouselTrack">
+
+      <div class="testi-card"><span class="testi-badge">Google</span><div class="testi-card-stars">★★★★★</div><p class="testi-text">"Pronašla sam svoje frizersko okrilje! Saška je čudesna — razumela je šta hoću bez puno reči i rezultat je bio savršen. Atmosfera je topla i prijatna. Dolazim svaki mesec!"</p><div class="testi-author"><div class="testi-avatar">J</div><div><p class="testi-name">Jelena P.</p><p class="testi-when">Pre mesec dana</p></div></div></div>
+
+      <div class="testi-card"><span class="testi-badge">Google</span><div class="testi-card-stars">★★★★★</div><p class="testi-text">"Konačno pravi balayage u Novom Sadu! Tražila sam ovu boju godinama i Saška je pogodila savršeno. Salon je divan, čist i uvek se osećam kao VIP gošća."</p><div class="testi-author"><div class="testi-avatar">A</div><div><p class="testi-name">Ana R.</p><p class="testi-when">Pre 3 nedelje</p></div></div></div>
+
+      <div class="testi-card"><span class="testi-badge">Google</span><div class="testi-card-stars">★★★★☆</div><p class="testi-text">"Već dve godine samo Saška mi dira kosu. Profesionalna, pažljiva i uvek ima sjajne ideje. Keratinski tretman koji je uradila je promenio moju kosu totalno."</p><div class="testi-author"><div class="testi-avatar">M</div><div><p class="testi-name">Maja S.</p><p class="testi-when">Pre 2 meseca</p></div></div></div>
+
+      <div class="testi-card"><span class="testi-badge">Google</span><div class="testi-card-stars">★★★★★</div><p class="testi-text">"Saška je otkrila boju koja mi savršeno stoji — nešto što nijedan frizer pre nje nije uspeo. Svaki put kad izađem iz salona osećam se kao nova žena. Preporučujem svima!"</p><div class="testi-author"><div class="testi-avatar">T</div><div><p class="testi-name">Tamara N.</p><p class="testi-when">Pre 5 nedelja</p></div></div></div>
+
+      <div class="testi-card"><span class="testi-badge">Google</span><div class="testi-card-stars">★★★★★</div><p class="testi-text">"Svečana frizura za mamu na mom venčanju — svi su pitali ko je frizura. Saška je uradila čudo! Neverovatno strpljenje, preciznost i ljubav prema poslu koji radi."</p><div class="testi-author"><div class="testi-avatar">N</div><div><p class="testi-name">Nina K.</p><p class="testi-when">Pre 6 nedelja</p></div></div></div>
+
+      <div class="testi-card"><span class="testi-badge">Google</span><div class="testi-card-stars">★★★★★</div><p class="testi-text">"Promenila sam boju kose radikalno i bila sam uplašena. Saška me je smirila, objasnila sve i rezultat je bio izvan svakog očekivanja. Preporučujem bez rezerve!"</p><div class="testi-author"><div class="testi-avatar">S</div><div><p class="testi-name">Sara B.</p><p class="testi-when">Pre 2 meseca</p></div></div></div>
+
+      <div class="testi-card"><span class="testi-badge">Google</span><div class="testi-card-stars">★★★★★</div><p class="testi-text">"Moja kćerka ima kovrdžavu kosu koja je uvek bila problem. Saška je sa njom radila neverovatno strpljivo i rezultat je bio impresivan. Dete je oduševljeno!"</p><div class="testi-author"><div class="testi-avatar">D</div><div><p class="testi-name">Dragana P.</p><p class="testi-when">Pre 3 nedelje</p></div></div></div>
+
+      <div class="testi-card"><span class="testi-badge">Google</span><div class="testi-card-stars">★★★★★</div><p class="testi-text">"Salon je uvek čist, muzika je opuštajuća i Saška uvek dočeka sa osmehom. Osećam se posebno svaki put. To se ne može naći svuda. Hvala Saška!"</p><div class="testi-author"><div class="testi-avatar">K</div><div><p class="testi-name">Katarina V.</p><p class="testi-when">Pre nedelju dana</p></div></div></div>
+
+    </div>
+  </div>
+
+  <div class="carousel-controls">
+    <button class="c-btn" id="cPrev" onclick="cPrev()" aria-label="Prethodni">‹</button>
+    <div class="c-dots" id="cDots"></div>
+    <button class="c-btn" id="cNext" onclick="cNext()" aria-label="Sledeći">›</button>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking">
+  <div class="booking-inner">
+    <div class="booking-header">
+      <p class="booking-eyebrow">Online zakazivanje</p>
+      <h2 class="booking-title">Zakažite <em>termin</em></h2>
+      <p class="booking-sub">Izaberite uslugu, datum i slobodan termin</p>
     </div>
 
-    <div class="testi-card reveal">
-      <span class="testi-badge">Google</span>
-      <div class="testi-card-stars">★★★★★</div>
-      <p class="testi-text">"Konačno pravi balayage u Novom Sadu! Tražila sam ovu boju godinama i Saška je pogodila savršeno. Salon je divan, čist i uvek se osećam kao VIP gošća."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">A</div>
-        <div>
-          <p class="testi-name">Ana R.</p>
-          <p class="testi-when">Pre 3 nedelje</p>
-        </div>
-      </div>
+    <div class="steps-row" id="stepsRow">
+      <div class="step-item active" id="si1"><div class="step-dot active" id="sd1">1</div><div class="step-lbl">Usluga</div></div>
+      <div class="step-line"></div>
+      <div class="step-item" id="si2"><div class="step-dot" id="sd2">2</div><div class="step-lbl">Datum</div></div>
+      <div class="step-line"></div>
+      <div class="step-item" id="si3"><div class="step-dot" id="sd3">3</div><div class="step-lbl">Termin</div></div>
+      <div class="step-line"></div>
+      <div class="step-item" id="si4"><div class="step-dot" id="sd4">4</div><div class="step-lbl">Potvrda</div></div>
     </div>
 
-    <div class="testi-card reveal">
-      <span class="testi-badge">Google</span>
-      <div class="testi-card-stars">★★★★☆</div>
-      <p class="testi-text">"Već dve godine samo Saška mi dira kosu. Profesionalna, pažljiva i uvek ima sjajne ideje za moj stil. Keratinski tretman koji je uradila je promenio moju kosu totalno."</p>
-      <div class="testi-author">
-        <div class="testi-avatar">M</div>
-        <div>
-          <p class="testi-name">Maja S.</p>
-          <p class="testi-when">Pre 2 meseca</p>
-        </div>
+    <!-- Step 1 -->
+    <div class="bk-panel active" id="bkP1">
+      <div class="bk-svc-grid">
+        <div class="bk-svc" data-svc="Šišanje & Oblikovanje" data-price="od 1.500 RSD" onclick="pickSvc(this)"><div class="bk-check">✓</div><div class="bk-name">Šišanje &amp; Oblikovanje</div><div class="bk-price">od 1.500 RSD · ~45 min</div></div>
+        <div class="bk-svc" data-svc="Bojenje & Balayage" data-price="od 3.500 RSD" onclick="pickSvc(this)"><div class="bk-check">✓</div><div class="bk-name">Bojenje &amp; Balayage</div><div class="bk-price">od 3.500 RSD · ~90 min</div></div>
+        <div class="bk-svc" data-svc="Nega & Tretmani" data-price="od 2.500 RSD" onclick="pickSvc(this)"><div class="bk-check">✓</div><div class="bk-name">Nega &amp; Tretmani</div><div class="bk-price">od 2.500 RSD · ~60 min</div></div>
+        <div class="bk-svc" data-svc="Svečane Frizure" data-price="od 3.500 RSD" onclick="pickSvc(this)"><div class="bk-check">✓</div><div class="bk-name">Svečane Frizure</div><div class="bk-price">od 3.500 RSD · ~60 min</div></div>
+        <div class="bk-svc" data-svc="Trajni Talasi" data-price="od 4.000 RSD" onclick="pickSvc(this)"><div class="bk-check">✓</div><div class="bk-name">Trajni Talasi</div><div class="bk-price">od 4.000 RSD · ~75 min</div></div>
+        <div class="bk-svc" data-svc="Feniranje & Styling" data-price="od 1.200 RSD" onclick="pickSvc(this)"><div class="bk-check">✓</div><div class="bk-name">Feniranje &amp; Styling</div><div class="bk-price">od 1.200 RSD · ~30 min</div></div>
       </div>
+      <div class="bk-nav"><div></div><button class="btn-bk-next" onclick="goStep(2)">Sledeći korak →</button></div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="bk-panel" id="bkP2">
+      <div class="cal-wrap">
+        <div class="cal-nav">
+          <button class="cal-arr" onclick="prevMo()">‹</button>
+          <span class="cal-month-lbl" id="calLbl"></span>
+          <button class="cal-arr" onclick="nextMo()">›</button>
+        </div>
+        <div class="cal-grid" id="calGrid"></div>
+      </div>
+      <div class="bk-nav"><button class="btn-bk-back" onclick="goStep(1)">← Nazad</button><button class="btn-bk-next" onclick="goStep(3)">Sledeći korak →</button></div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="bk-panel" id="bkP3">
+      <p style="font-size:.85rem;color:var(--ink-mid);font-style:italic;margin-bottom:1.5rem">Slobodni termini za <span id="dateLbl" style="color:var(--sage-bg);font-weight:500"></span></p>
+      <div class="time-grid" id="timeGrid"></div>
+      <div class="bk-nav"><button class="btn-bk-back" onclick="goStep(2)">← Nazad</button><button class="btn-bk-next" onclick="goStep(4)">Sledeći korak →</button></div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="bk-panel" id="bkP4">
+      <div class="confirm-box">
+        <div class="confirm-ttl">Pregled zakazivanja</div>
+        <div class="confirm-row"><span class="cr-lbl">Usluga</span><span class="cr-val" id="confSvc">—</span></div>
+        <div class="confirm-row"><span class="cr-lbl">Datum</span><span class="cr-val" id="confDate">—</span></div>
+        <div class="confirm-row"><span class="cr-lbl">Termin</span><span class="cr-val" id="confTime">—</span></div>
+        <div class="confirm-row"><span class="cr-lbl">Cena</span><span class="cr-val" id="confPrice">—</span></div>
+      </div>
+      <div class="bk-form">
+        <div class="bk-row">
+          <div class="bk-field"><label>Vaše ime</label><input type="text" id="bkName" placeholder="Jelena Petrović"></div>
+          <div class="bk-field"><label>Telefon</label><input type="tel" id="bkPhone" placeholder="065 270 0048"></div>
+        </div>
+        <div class="bk-field"><label>Email (opciono)</label><input type="email" id="bkEmail" placeholder="jelena@gmail.com"></div>
+      </div>
+      <div class="bk-nav"><button class="btn-bk-back" onclick="goStep(3)">← Nazad</button><button class="btn-bk-next" onclick="confirmBk()">Potvrdi termin 🌸</button></div>
+    </div>
+
+    <div class="bk-success" id="bkSuccess">
+      <span class="bk-success-icon">🌸</span>
+      <div class="bk-success-title">Termin potvrđen!</div>
+      <p class="bk-success-sub" id="bkMsg">Hvala! Vidimo se uskoro u Saškica Hair Studio.</p>
+      <br><br>
+      <button class="btn-bk-next" onclick="resetBk()">Zakaži novi termin</button>
     </div>
   </div>
 </section>
 
+<!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact-blob"></div>
   <div class="contact-blob-2"></div>
-
   <div class="contact-left">
     <p class="contact-eyebrow reveal">Pronađite nas</p>
     <h2 class="contact-title reveal">Zakažite<br>svoju <em>posetu</em></h2>
-
     <div class="contact-items">
-      <div class="ci reveal">
-        <div class="ci-icon">📞</div>
-        <div>
-          <p class="ci-label">Telefon</p>
-          <p class="ci-value"><a href="tel:+381652700048">065 270 0048</a></p>
-        </div>
-      </div>
-      <div class="ci reveal">
-        <div class="ci-icon">📍</div>
-        <div>
-          <p class="ci-label">Adresa</p>
-          <p class="ci-value">Novi Sad, Srbija</p>
-        </div>
-      </div>
-      <div class="ci reveal">
-        <div class="ci-icon">📸</div>
-        <div>
-          <p class="ci-label">Instagram</p>
-          <p class="ci-value"><a href="https://www.instagram.com/studiosaskica/" target="_blank">@studiosaskica</a></p>
-        </div>
-      </div>
-      <div class="ci reveal">
-        <div class="ci-icon">🕐</div>
-        <div>
-          <p class="ci-label">Radno vreme</p>
-          <p class="ci-value">Pon – Sub: 09:00 – 20:00<br>Ned: Po dogovoru</p>
-        </div>
-      </div>
+      <div class="ci reveal"><div class="ci-icon">📞</div><div><p class="ci-label">Telefon</p><p class="ci-value"><a href="tel:+381652700048">065 270 0048</a></p></div></div>
+      <div class="ci reveal"><div class="ci-icon">📍</div><div><p class="ci-label">Adresa</p><p class="ci-value">Novi Sad, Srbija</p></div></div>
+      <div class="ci reveal"><div class="ci-icon">📸</div><div><p class="ci-label">Instagram</p><p class="ci-value"><a href="https://www.instagram.com/studiosaskica/" target="_blank">@studiosaskica</a></p></div></div>
+      <div class="ci reveal"><div class="ci-icon">🕐</div><div><p class="ci-label">Radno vreme</p><p class="ci-value">Pon – Sub: 09:00 – 20:00<br>Ned: Po dogovoru</p></div></div>
     </div>
-
     <div class="contact-socials reveal">
       <a href="https://www.instagram.com/studiosaskica/" target="_blank" class="social-pill">Instagram</a>
       <a href="https://www.facebook.com/p/Studio-Sa%C5%A1kica-100063625088729/" target="_blank" class="social-pill">Facebook</a>
       <a href="https://maps.app.goo.gl/bU6sbvUvXACW66tu5" target="_blank" class="social-pill">Google Maps</a>
     </div>
   </div>
-
   <div class="contact-right">
     <p class="form-title reveal">Pošaljite nam poruku ✉</p>
-
-    <form class="cform reveal" onsubmit="handleSubmit(event)">
+    <form class="cform reveal" onsubmit="handleForm(event)">
       <div class="cform-row">
-        <div class="cfield">
-          <label>Vaše ime</label>
-          <input type="text" placeholder="Unesite ime">
-        </div>
-        <div class="cfield">
-          <label>Telefon</label>
-          <input type="tel" placeholder="Unesite broj telefona">
-        </div>
+        <div class="cfield"><label>Vaše ime</label><input type="text" placeholder="Unesite ime"></div>
+        <div class="cfield"><label>Telefon</label><input type="tel" placeholder="Unesite broj telefona"></div>
       </div>
       <div class="cfield">
         <label>Usluga</label>
         <select>
           <option value="" disabled selected>Izaberite uslugu ↓</option>
-          <option>Šišanje & Oblikovanje</option>
-          <option>Bojenje & Balayage</option>
-          <option>Nega & Tretmani</option>
+          <option>Šišanje &amp; Oblikovanje</option>
+          <option>Bojenje &amp; Balayage</option>
+          <option>Nega &amp; Tretmani</option>
           <option>Svečane Frizure</option>
           <option>Trajni Talasi</option>
-          <option>Feniranje & Styling</option>
+          <option>Feniranje &amp; Styling</option>
         </select>
       </div>
-      <div class="cfield">
-        <label>Poruka ili željeni termin</label>
-        <textarea rows="3" placeholder="Recite nam šta biste voleli ili kada biste mogli da dođete..."></textarea>
-      </div>
+      <div class="cfield"><label>Poruka ili željeni termin</label><textarea rows="3" placeholder="Recite nam šta biste voleli ili kada biste mogli da dođete..."></textarea></div>
       <button type="submit" class="csubmit">Pošalji poruku →</button>
     </form>
   </div>
@@ -1501,39 +693,199 @@ footer {
 </footer>
 
 <script>
-// Nav elevation
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('elevated', window.scrollY > 80);
-});
-
-// Scroll reveal
-const observer = new IntersectionObserver(entries => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 80);
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// Form
-function handleSubmit(e) {
-  e.preventDefault();
-  const btn = e.target.querySelector('.csubmit');
-  const orig = btn.textContent;
-  btn.textContent = 'Poslato! ✨';
-  btn.style.background = 'var(--sage-bg)';
-  btn.style.color = 'var(--warm-white)';
-  setTimeout(() => {
-    btn.textContent = orig;
-    btn.style.background = '';
-    btn.style.color = '';
-    e.target.reset();
-  }, 3000);
+/* ── MOBILE MENU ── */
+function toggleMob(){
+  const h=document.getElementById('hamburger'),m=document.getElementById('mobileMenu');
+  h.classList.toggle('open');m.classList.toggle('open');
+  document.body.style.overflow=m.classList.contains('open')?'hidden':'';
 }
+function closeMob(){
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+/* ── NAV ── */
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('elevated',window.scrollY>80));
+
+/* ── REVEAL ── */
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);obs.unobserve(e.target);}});
+},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ── CAROUSEL ── */
+let cIdx=0;
+const track=document.getElementById('carouselTrack');
+const outer=document.getElementById('carouselOuter');
+const cards=[...track.querySelectorAll('.testi-card')];
+const dotsEl=document.getElementById('cDots');
+
+function getVis(){return window.innerWidth<=900?1:window.innerWidth<=1200?2:3}
+let totalSlides=Math.ceil(cards.length/getVis());
+
+function buildDots(){
+  const v=getVis();totalSlides=Math.ceil(cards.length/v);
+  dotsEl.innerHTML='';
+  for(let i=0;i<totalSlides;i++){
+    const d=document.createElement('button');
+    d.className='c-dot'+(i===cIdx?' active':'');
+    d.onclick=()=>goCar(i);dotsEl.appendChild(d);
+  }
+}
+
+function updateCar(){
+  const v=getVis();
+  const margin=v===1?0:24;
+  const cardW=(outer.offsetWidth-(v-1)*margin)/v;
+
+  cards.forEach(c=>{
+    c.style.flex=`0 0 ${cardW}px`;
+    c.style.width=`${cardW}px`;
+    c.style.maxWidth=`${cardW}px`;
+    c.style.marginRight=`${margin}px`;
+  });
+
+  const offset=cIdx*(outer.offsetWidth+margin);
+  track.style.transform=`translateX(-${offset}px)`;
+
+  totalSlides=Math.ceil(cards.length/v);
+  dotsEl.querySelectorAll('.c-dot').forEach((d,i)=>d.classList.toggle('active',i===cIdx));
+  document.getElementById('cPrev').disabled=cIdx===0;
+  document.getElementById('cNext').disabled=cIdx>=totalSlides-1;
+}
+
+function goCar(i){cIdx=i;updateCar()}
+function cPrev(){if(cIdx>0){cIdx--;updateCar()}}
+function cNext(){if(cIdx<totalSlides-1){cIdx++;updateCar()}}
+
+let touchX=0;
+outer.addEventListener('touchstart',e=>{touchX=e.touches[0].clientX},{passive:true});
+outer.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-touchX;if(Math.abs(dx)>40){dx<0?cNext():cPrev()}});
+window.addEventListener('resize',()=>{cIdx=0;buildDots();updateCar()});
+buildDots();updateCar();
+setInterval(()=>{if(cIdx<totalSlides-1)cNext();else{cIdx=0;updateCar()}},6000);
+
+/* ── BOOKING ── */
+const bk={svc:null,price:null,date:null,dateLbl:null,time:null};
+const MONTHS=['Januar','Februar','Mart','April','Maj','Jun','Jul','Avgust','Septembar','Oktobar','Novembar','Decembar'];
+const DAYS=['Ned','Pon','Uto','Sre','Čet','Pet','Sub'];
+let calY,calM;
+function initCal(){const n=new Date();calY=n.getFullYear();calM=n.getMonth()}
+
+function goStep(n){
+  if(n===2&&!bk.svc){alert('Molimo izaberite uslugu.');return}
+  if(n===3&&!bk.date){alert('Molimo izaberite datum.');return}
+  if(n===4&&!bk.time){alert('Molimo izaberite termin.');return}
+  document.querySelectorAll('.bk-panel').forEach((p,i)=>p.classList.toggle('active',i+1===n));
+  for(let i=1;i<=4;i++){
+    const d=document.getElementById('sd'+i),s=document.getElementById('si'+i);
+    d.classList.remove('active','done');s.classList.remove('active');
+    if(i<n){d.classList.add('done');d.textContent='✓'}
+    else if(i===n){d.classList.add('active');d.textContent=i;s.classList.add('active')}
+    else d.textContent=i;
+  }
+  if(n===2)renderCal();
+  if(n===3)renderSlots();
+  if(n===4)fillConf();
+}
+
+function pickSvc(el){
+  document.querySelectorAll('.bk-svc').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');bk.svc=el.dataset.svc;bk.price=el.dataset.price;
+}
+
+function renderCal(){
+  document.getElementById('calLbl').textContent=MONTHS[calM]+' '+calY;
+  const g=document.getElementById('calGrid');g.innerHTML='';
+  ['Pon','Uto','Sre','Čet','Pet','Sub','Ned'].forEach(d=>{
+    const el=document.createElement('div');el.className='cal-day-lbl';el.textContent=d;g.appendChild(el);
+  });
+  const first=new Date(calY,calM,1).getDay();
+  const days=new Date(calY,calM+1,0).getDate();
+  const today=new Date();today.setHours(0,0,0,0);
+  const off=first===0?6:first-1;
+  for(let i=0;i<off;i++){const b=document.createElement('div');b.className='cal-day';g.appendChild(b)}
+  for(let d=1;d<=days;d++){
+    const date=new Date(calY,calM,d);
+    const ds=date.toISOString().split('T')[0];
+    const el=document.createElement('div');
+    el.className='cal-day';el.textContent=d;
+    if(date.toDateString()===today.toDateString())el.classList.add('today');
+    if(ds===bk.date)el.classList.add('selected');
+    if(date<today||date.getDay()===0){el.classList.add('past')}
+    else{
+      el.classList.add('available');
+      el.onclick=()=>{
+        document.querySelectorAll('.cal-day.selected').forEach(x=>x.classList.remove('selected'));
+        el.classList.add('selected');bk.date=ds;bk.time=null;
+        bk.dateLbl=DAYS[date.getDay()]+', '+d+'. '+MONTHS[calM];
+      };
+    }
+    g.appendChild(el);
+  }
+}
+function prevMo(){calM--;if(calM<0){calM=11;calY--}renderCal()}
+function nextMo(){calM++;if(calM>11){calM=0;calY++}renderCal()}
+
+function seeded(s){let v=s;return()=>{v=(v*9301+49297)%233280;return v/233280}}
+function pad(n){return String(n).padStart(2,'0')}
+
+function renderSlots(){
+  document.getElementById('dateLbl').textContent=bk.dateLbl||bk.date;
+  const g=document.getElementById('timeGrid');g.innerHTML='';
+  const slots=[];
+  for(let h=9;h<20;h++){slots.push(pad(h)+':00');slots.push(pad(h)+':30')}
+  const rng=seeded([...(bk.date||'x')].reduce((a,c)=>a+c.charCodeAt(0),0));
+  slots.forEach(t=>{
+    const booked=rng()<.4;
+    const el=document.createElement('div');
+    el.className='time-slot '+(booked?'booked':'available')+(bk.time===t?' selected':'');
+    el.innerHTML=t+`<span class="slot-st">${booked?'zauzet':'slobodan'}</span>`;
+    if(!booked)el.onclick=()=>{
+      document.querySelectorAll('.time-slot.selected').forEach(x=>x.classList.remove('selected'));
+      el.classList.add('selected');bk.time=t;
+    };
+    g.appendChild(el);
+  });
+}
+
+function fillConf(){
+  document.getElementById('confSvc').textContent=bk.svc||'—';
+  document.getElementById('confDate').textContent=bk.dateLbl||bk.date||'—';
+  document.getElementById('confTime').textContent=bk.time||'—';
+  document.getElementById('confPrice').textContent=bk.price||'—';
+}
+
+function confirmBk(){
+  const name=document.getElementById('bkName').value.trim();
+  if(!name){alert('Molimo unesite vaše ime.');return}
+  document.querySelectorAll('.bk-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('stepsRow').style.display='none';
+  document.getElementById('bkSuccess').style.display='block';
+  document.getElementById('bkMsg').textContent=`Hvala, ${name}! Zakazano: ${bk.svc}, ${bk.dateLbl} u ${bk.time}. Vidimo se uskoro! 🌸`;
+}
+
+function resetBk(){
+  Object.assign(bk,{svc:null,price:null,date:null,dateLbl:null,time:null});
+  document.getElementById('bkSuccess').style.display='none';
+  document.getElementById('stepsRow').style.display='';
+  document.querySelectorAll('.bk-svc').forEach(o=>o.classList.remove('selected'));
+  goStep(1);
+}
+
+/* ── CONTACT FORM ── */
+function handleForm(e){
+  e.preventDefault();
+  const btn=e.target.querySelector('.csubmit');
+  const orig=btn.textContent;
+  btn.textContent='Poslato! ✨';
+  btn.style.background='var(--sage-bg)';
+  btn.style.color='var(--warm-white)';
+  setTimeout(()=>{btn.textContent=orig;btn.style.background='';btn.style.color='';e.target.reset()},3000);
+}
+
+initCal();
 </script>
 </body>
 </html>
